@@ -1,0 +1,123 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: signal-triage-db
+    environment:
+      POSTGRES_DB: signal_triage
+      POSTGRES_USER: signaltriage
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backups:/backups
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U signaltriage"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Redis Cache (Optional)
+  redis:
+    image: redis:7-alpine
+    container_name: signal-triage-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  # Signal Triage API
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: signal-triage-api
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      # Database
+      DATABASE_URL: postgresql://signaltriage:${POSTGRES_PASSWORD:-changeme}@postgres:5432/signal_triage
+      
+      # Cache
+      CACHE_BACKEND: redis
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      
+      # API Configuration
+      API_HOST: 0.0.0.0
+      API_PORT: 8000
+      API_WORKERS: 4
+      API_KEYS: ${API_KEYS:-}
+      CORS_ORIGINS: ${CORS_ORIGINS:-*}
+      
+      # Market Data APIs
+      SEC_USER_AGENT: ${SEC_USER_AGENT:-SignalTriage/1.0 (contact@example.com)}
+      FRED_API_KEY: ${FRED_API_KEY:-}
+      ALPHAVANTAGE_API_KEY: ${ALPHAVANTAGE_API_KEY:-}
+      IEXCLOUD_API_TOKEN: ${IEXCLOUD_API_TOKEN:-}
+      NINEFIN_API_KEY: ${NINEFIN_API_KEY:-}
+      BLOOMBERG_API_KEY: ${BLOOMBERG_API_KEY:-}
+      
+      # Benchmarker
+      BENCHMARKER_USE_LIVE: ${BENCHMARKER_USE_LIVE:-0}
+      BENCHMARKER_DATA_SOURCE: ${BENCHMARKER_DATA_SOURCE:-edgar}
+      
+      # Logging
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      ENVIRONMENT: ${ENVIRONMENT:-production}
+      
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/app/logs
+      - ./.cache:/app/.cache
+      - ./data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Streamlit Dashboard
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: signal-triage-dashboard
+    depends_on:
+      - api
+    environment:
+      API_BASE_URL: http://api:8000
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./logs:/app/logs
+      - ./.cache:/app/.cache
+    command: streamlit run signal_triage/ui/dashboard.py --server.port=8501 --server.address=0.0.0.0
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  default:
+    name: signal-triage-network

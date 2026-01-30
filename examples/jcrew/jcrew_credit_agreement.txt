@@ -1,0 +1,250 @@
+CREDIT AGREEMENT
+
+Dated as of March 5, 2014
+
+J.CREW GROUP, INC., as Borrower
+THE LENDERS PARTY HERETO
+JPMORGAN CHASE BANK, N.A., as Administrative Agent
+
+$1,700,000,000 FIRST LIEN TERM LOAN FACILITY
+
+===============================================================================
+
+ARTICLE I - DEFINITIONS
+
+Section 1.01 Defined Terms
+
+"Consolidated Assets" means, as of any date of determination, the total assets of the Company and its Restricted Subsidiaries on a consolidated basis, determined in accordance with GAAP.
+
+"Consolidated EBITDA" means, for any period, Consolidated Net Income for such period plus (a) Consolidated Interest Expense, (b) provisions for taxes, (c) depreciation and amortization, (d) non-cash charges, and (e) other add-backs including (i) run-rate cost savings, (ii) synergies reasonably expected to be realized, (iii) restructuring charges, and (iv) other extraordinary or non-recurring items.
+
+"Investment" means, with respect to any Person, any direct or indirect advance, loan or other extension of credit or capital contribution to (by means of any transfer of cash or other property to others or any payment for property or services for the account or use of others), or any purchase or acquisition of Capital Stock, bonds, notes, debentures or other similar instruments issued by, such Person.
+
+"Required Lenders" means, at any time, Lenders holding more than 50% of the aggregate principal amount of the Term Loans then outstanding.
+
+"Restricted Subsidiary" means any Subsidiary of the Company other than an Unrestricted Subsidiary.
+
+"Unrestricted Subsidiary" means (a) any Subsidiary of the Company designated as such pursuant to Section 6.14 and (b) any Subsidiary of an Unrestricted Subsidiary.
+
+===============================================================================
+
+ARTICLE II - THE CREDITS
+
+Section 2.01 Term Loan Commitments
+
+Subject to the terms and conditions set forth herein, each Lender agrees to make a term loan (a "Term Loan") to the Borrower on the Closing Date in a principal amount not exceeding such Lender's Commitment. Amounts borrowed under this Section 2.01 and repaid or prepaid may not be reborrowed.
+
+Section 2.02 Interest Rate
+
+The Term Loans shall bear interest at a rate per annum equal to LIBOR plus 3.00% per annum (the "Applicable Rate").
+
+===============================================================================
+
+ARTICLE III - COLLATERAL AND GUARANTEES
+
+Section 3.01 Collateral
+
+The Obligations shall be secured by a first priority perfected security interest in substantially all assets of the Borrower and the Guarantors, including without limitation:
+
+(a) all accounts receivable, inventory, and equipment;
+(b) all intellectual property, including trademarks, trade names, patents, copyrights, and licenses (the "IP Collateral");
+(c) all equity interests in Restricted Subsidiaries;
+(d) all deposit accounts and securities accounts; and
+(e) all proceeds of the foregoing.
+
+Section 3.02 Guarantors
+
+The Obligations shall be guaranteed by each direct and indirect Restricted Subsidiary of the Borrower (each, a "Guarantor").
+
+===============================================================================
+
+ARTICLE IV - REPRESENTATIONS AND WARRANTIES
+
+Section 4.01 Organization and Qualification
+
+The Borrower is a corporation duly organized, validly existing and in good standing under the laws of the State of Delaware.
+
+Section 4.02 Intellectual Property
+
+The Borrower and its Restricted Subsidiaries own or have the right to use all intellectual property necessary for the conduct of their business. The J.Crew trademarks, brand names, and related intellectual property have been valued at approximately $1,650,000,000 and constitute a material portion of the Collateral.
+
+===============================================================================
+
+ARTICLE V - AFFIRMATIVE COVENANTS
+
+Section 5.01 Financial Statements
+
+The Borrower shall deliver to the Administrative Agent:
+(a) Quarterly financial statements within 45 days after the end of each fiscal quarter;
+(b) Annual audited financial statements within 90 days after the end of each fiscal year.
+
+Section 5.02 Maintenance of Property
+
+The Borrower shall maintain and preserve all of its material properties and assets, including the IP Collateral.
+
+===============================================================================
+
+ARTICLE VI - NEGATIVE COVENANTS
+
+Section 6.01 Indebtedness
+
+The Borrower shall not, and shall not permit any Restricted Subsidiary to, create, incur, assume or suffer to exist any Indebtedness, except:
+
+(a) Indebtedness under this Agreement and the other Loan Documents;
+(b) Indebtedness existing on the Closing Date and set forth on Schedule 6.01;
+(c) Intercompany Indebtedness between the Borrower and Restricted Subsidiaries;
+(d) Additional Indebtedness in an aggregate principal amount not to exceed $100,000,000;
+(e) Incremental Facilities as permitted under Section 2.14.
+
+Section 6.02 Liens
+
+The Borrower shall not, and shall not permit any Restricted Subsidiary to, create, incur, assume or suffer to exist any Lien upon any of its property, assets or revenues, whether now owned or hereafter acquired, except:
+
+(a) Liens pursuant to the Loan Documents;
+(b) Permitted Liens as defined in the Loan Documents;
+(c) Liens securing Indebtedness permitted under Section 6.01.
+
+Section 6.03 Restricted Payments
+
+The Borrower shall not, and shall not permit any Restricted Subsidiary to, declare or make any Restricted Payment, except:
+
+(a) dividends payable solely in Capital Stock;
+(b) other Restricted Payments in an aggregate amount not to exceed $50,000,000 in any fiscal year.
+
+Section 6.04 Investments
+
+The Borrower shall not, and shall not permit any Restricted Subsidiary to, make any Investment, except:
+
+(a) Investments existing on the Closing Date and set forth on Schedule 6.04;
+(b) Investments in cash and Cash Equivalents;
+(c) Investments by the Borrower in Restricted Subsidiaries;
+(d) Investments in Unrestricted Subsidiaries in an aggregate amount not to exceed the greater of (x) $250,000,000 and (y) 25% of Consolidated Total Assets at the time of such Investment;
+(e) Additional Investments in an aggregate amount not to exceed $75,000,000.
+
+Section 6.05 Asset Sales
+
+The Borrower shall not, and shall not permit any Restricted Subsidiary to, consummate any Asset Sale, except:
+
+(a) Asset Sales of inventory in the ordinary course of business;
+(b) Asset Sales of obsolete or worn-out equipment;
+(c) Asset Sales resulting in aggregate Net Proceeds not exceeding $50,000,000 in any fiscal year;
+(d) Asset Sales to Restricted Subsidiaries;
+(e) Asset Sales to Unrestricted Subsidiaries to the extent permitted as Investments under Section 6.04.
+
+Section 6.14 Unrestricted Subsidiaries
+
+(a) The Borrower may designate any Subsidiary (other than the Borrower) as an "Unrestricted Subsidiary" under this Agreement by delivering a written notice to the Administrative Agent; provided that:
+
+    (i) immediately before and after giving effect to such designation, no Default or Event of Default shall exist;
+    
+    (ii) such designation shall be deemed to be an Investment by the Borrower in such Unrestricted Subsidiary in an amount equal to the fair market value of the Borrower's interest in such Subsidiary at the time of such designation, and such Investment must be a permitted Investment under Section 6.04;
+    
+    (iii) no Subsidiary may be designated as an Unrestricted Subsidiary if it is a "Restricted Subsidiary" for purposes of any other Indebtedness of the Borrower in an aggregate principal amount exceeding $25,000,000.
+
+(b) The Borrower may revoke any designation of a Subsidiary as an Unrestricted Subsidiary by delivering a written notice to the Administrative Agent, provided that such revocation shall not be deemed to constitute an incurrence of Indebtedness of such Subsidiary for purposes of Section 6.01.
+
+===============================================================================
+
+ARTICLE VII - EVENTS OF DEFAULT
+
+Section 7.01 Events of Default
+
+An "Event of Default" shall exist if any of the following events occurs:
+
+(a) Non-Payment: The Borrower fails to pay any principal, interest, or fees when due.
+
+(b) Breach of Covenants: The Borrower breaches any covenant in Article VI and such breach continues for 30 days after written notice.
+
+(c) Representations and Warranties: Any representation or warranty proves to have been materially incorrect when made.
+
+(d) Cross-Default: The Borrower defaults on any other Indebtedness exceeding $50,000,000.
+
+(e) Bankruptcy: The Borrower or any Material Subsidiary commences a voluntary bankruptcy case or an involuntary case is commenced and not dismissed within 60 days.
+
+(f) Judgment: A final judgment or judgments for the payment of money exceeding $50,000,000 in the aggregate is rendered against the Borrower.
+
+Section 7.02 Remedies
+
+Upon the occurrence and during the continuance of an Event of Default, the Administrative Agent may, and at the request of Required Lenders shall, take any or all of the following actions:
+
+(a) declare all outstanding Term Loans immediately due and payable;
+(b) exercise all rights and remedies under the Loan Documents and applicable law.
+
+===============================================================================
+
+ARTICLE VIII - ACTIONS REQUIRING LENDER CONSENT
+
+Section 8.01 Pro Rata Sharing
+
+All payments received by the Administrative Agent for the account of the Lenders shall be distributed pro rata among the Lenders based on their respective shares of the outstanding Term Loans. No Lender shall be entitled to bring any action or proceeding against the Borrower to enforce any Loan Document unless:
+
+(a) such action or proceeding is brought on behalf of all Lenders on a pro rata basis; and
+(b) such Lender shall share any recovery on a pro rata basis with all other Lenders.
+
+Section 8.02 Required Lender Actions
+
+The following actions may be taken by Required Lenders (>50%):
+
+(a) Waivers of Events of Default (other than payment defaults);
+(b) Amendments to financial covenants;
+(c) Consent to material transactions not otherwise permitted.
+
+Section 8.03 Amendments Requiring All Lenders
+
+The following amendments require the consent of all Lenders:
+
+(a) Reduction of principal, interest rate, or fees;
+(b) Extension of maturity or payment dates;
+(c) Release of substantial collateral (other than in accordance with Loan Documents);
+(d) Changes to pro rata sharing provisions;
+(e) Changes to voting thresholds.
+
+===============================================================================
+
+ARTICLE IX - ADMINISTRATIVE AGENT
+
+Section 9.01 Appointment and Authority
+
+Each Lender hereby appoints JPMorgan Chase Bank, N.A. as Administrative Agent to act as specified herein and in the other Loan Documents. The Administrative Agent shall have and may exercise such powers under the Loan Documents as are delegated to it by the terms hereof, together with such powers as are reasonably incidental thereto.
+
+Section 9.02 Delegation of Duties
+
+The Administrative Agent may perform any of its duties hereunder by or through agents or employees and may employ agents and attorneys-in-fact.
+
+===============================================================================
+
+SIGNATURES
+
+IN WITNESS WHEREOF, the parties hereto have caused this Agreement to be executed by their respective officers thereunto duly authorized, as of the date first above written.
+
+J.CREW GROUP, INC.
+
+By: /s/ Michael J. Nicholson
+Name: Michael J. Nicholson
+Title: Chief Financial Officer
+
+
+JPMORGAN CHASE BANK, N.A., as Administrative Agent
+
+By: /s/ Patricia Hanratty  
+Name: Patricia Hanratty
+Title: Vice President
+
+
+[Lender signature pages follow]
+
+===============================================================================
+
+SCHEDULE 6.04 - EXISTING INVESTMENTS
+
+1. Equity interests in J.Crew Operating Corp. (Restricted Subsidiary)
+2. Equity interests in J.Crew International, Inc. (Restricted Subsidiary)
+3. Equity interests in J.Crew Retail Stores, Inc. (Restricted Subsidiary)
+4. Various intercompany loans among Restricted Subsidiaries
+5. Cash and cash equivalents held in ordinary course accounts
+
+===============================================================================
+
+END OF CREDIT AGREEMENT
+
+[This is a simplified excerpt for educational purposes. Actual J.Crew credit agreement was significantly longer and more complex. Key provisions highlighted here demonstrate the "trap door" mechanics that enabled the 2017 IP transfer transaction.]

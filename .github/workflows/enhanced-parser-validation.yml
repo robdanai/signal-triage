@@ -1,0 +1,210 @@
+# Enhanced Parser Validation CI/CD Workflow
+# Automatically validates Enhanced Parser on push and PR
+
+name: Enhanced Parser Validation
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'signal_triage/document_intel/**'
+      - 'tests/test_enhanced_parser*.py'
+      - 'tests/validation_*.py'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'signal_triage/document_intel/**'
+      - 'tests/**'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  # Quick validation (runs on every push)
+  quick-validation:
+    name: Quick Validation Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run quick validation
+        run: |
+          python tests/run_validation.py --quick --quiet
+        continue-on-error: false
+      
+      - name: Upload results (if failed)
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: quick-validation-results
+          path: docs/enhanced_parser_validation_report.*
+
+  # Full validation (runs on main branch and PRs)
+  full-validation:
+    name: Full Validation Suite
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run full validation
+        run: |
+          python tests/run_validation.py --full --format both
+      
+      - name: Check quality threshold
+        run: |
+          python tests/run_validation.py --full --quality-threshold 80
+      
+      - name: Generate HTML report
+        if: always()
+        run: |
+          python tests/generate_html_report.py docs/enhanced_parser_validation_report.json
+      
+      - name: Upload validation reports
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: validation-reports
+          path: |
+            docs/enhanced_parser_validation_report.json
+            docs/enhanced_parser_validation_report.md
+            docs/enhanced_parser_validation_report.html
+          retention-days: 30
+      
+      - name: Comment on PR
+        if: github.event_name == 'pull_request' && always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('docs/enhanced_parser_validation_report.json', 'utf8'));
+            
+            const qualityScore = report.overall_quality_score;
+            const emoji = qualityScore >= 80 ? '✅' : '⚠️';
+            const status = qualityScore >= 80 ? 'PASS' : 'FAIL';
+            
+            const comment = `## ${emoji} Enhanced Parser Validation ${status}
+            
+            **Quality Score:** ${qualityScore.toFixed(1)}/100
+            
+            **Summary:**
+            - Total Scenarios: ${report.summary.total_scenarios}
+            - Successful: ${report.summary.successful_scenarios}
+            - Failed: ${report.summary.failed_scenarios}
+            - Success Rate: ${report.summary.success_rate}
+            
+            **Aggregate Metrics:**
+            - Avg EBITDA Risk: ${report.aggregate_metrics.avg_ebitda_risk_score.toFixed(1)}/10.0
+            - Avg LME Risk: ${report.aggregate_metrics.avg_lme_risk_score.toFixed(1)}/10.0
+            - Total LME Risks: ${report.aggregate_metrics.total_lme_risks_found}
+            - EBITDA Detection Rate: ${report.aggregate_metrics.ebitda_detection_rate}
+            
+            [📊 View Full Report](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            `;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+  # Unit tests
+  unit-tests:
+    name: Enhanced Parser Unit Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov
+      
+      - name: Run unit tests
+        run: |
+          pytest tests/test_enhanced_parser.py -v --cov=signal_triage.document_intel.enhanced_parser
+      
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage.xml
+          flags: enhanced-parser
+
+  # Performance benchmark
+  performance:
+    name: Performance Benchmark
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: Checkout code (PR)
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run performance benchmark (current)
+        run: |
+          python tests/run_validation.py --full --format json
+          mv docs/enhanced_parser_validation_report.json current_report.json
+      
+      - name: Checkout code (main branch)
+        uses: actions/checkout@v3
+        with:
+          ref: main
+      
+      - name: Run performance benchmark (main)
+        run: |
+          pip install -r requirements.txt
+          python tests/run_validation.py --full --format json
+          mv docs/enhanced_parser_validation_report.json main_report.json
+      
+      - name: Compare performance
+        run: |
+          python tests/run_validation.py --full --compare main_report.json

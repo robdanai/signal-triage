@@ -1,0 +1,117 @@
+# Fly.io deployment configuration for Signal Triage
+# Deploy: fly launch (first time) or fly deploy (updates)
+# https://fly.io/docs/reference/configuration/
+
+app = "signal-triage"
+primary_region = "ord"  # Chicago - change as needed
+
+[build]
+  # Use Dockerfile for build
+  dockerfile = "Dockerfile"
+
+[env]
+  # Environment variables (non-sensitive)
+  LOG_LEVEL = "INFO"
+  API_HOST = "0.0.0.0"
+  API_PORT = "8000"
+  API_WORKERS = "4"
+  BENCHMARKER_USE_LIVE = "1"
+  BENCHMARKER_DATA_SOURCE = "edgar"
+  ENABLE_API_CACHE = "true"
+
+# HTTP service configuration
+[[services]]
+  protocol = "tcp"
+  internal_port = 8000
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+  # HTTP port 80
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+    force_https = true
+
+  # HTTPS port 443
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+  # Health checks
+  [services.concurrency]
+    type = "requests"
+    hard_limit = 250
+    soft_limit = 200
+
+  [[services.tcp_checks]]
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "10s"
+
+  [[services.http_checks]]
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "10s"
+    method = "get"
+    path = "/health"
+    protocol = "http"
+
+# Machine resources
+[compute]
+  memory = "2gb"
+  cpus = 2
+
+# Volume for persistent storage (optional)
+# [[mounts]]
+#   source = "signal_triage_data"
+#   destination = "/app/data"
+#   initial_size = "10gb"
+
+# Secrets (set via: fly secrets set KEY=value)
+# Required secrets:
+# - SEC_USER_AGENT="YourCompany/1.0 (contact@example.com)"
+# - API_SECRET_KEY="your-secret-key"
+# - DATABASE_URL="postgresql://..."
+# - REDIS_URL="redis://..."
+#
+# Optional secrets:
+# - ALPHA_VANTAGE_API_KEY
+# - IEX_CLOUD_API_KEY
+# - OPENAI_API_KEY
+# - SENTRY_DSN
+
+# PostgreSQL database (create via: fly postgres create)
+# Then attach: fly postgres attach signal-triage-db
+# This automatically sets DATABASE_URL
+
+# Redis (create via: fly redis create)
+# Then set REDIS_URL manually: fly secrets set REDIS_URL=redis://...
+
+# Metrics
+[metrics]
+  port = 9091
+  path = "/metrics"
+
+# Deploy regions (uncomment to enable multi-region)
+# [regions]
+#   ord = true  # Chicago
+#   iad = true  # Ashburn, Virginia
+#   lax = true  # Los Angeles
+
+# Process groups (for multiple services)
+[processes]
+  app = "uvicorn run_api_server:app --host 0.0.0.0 --port 8000 --workers 4"
+  # worker = "python -m signal_triage.workers.background_worker"
+
+# Auto-scaling (optional)
+# [[services]]
+# ...
+#   [services.scaling]
+#     min = 1
+#     max = 10
+
+# Deploy hooks
+[deploy]
+  release_command = "python -m alembic upgrade head"  # Run database migrations

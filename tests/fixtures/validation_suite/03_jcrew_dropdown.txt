@@ -1,0 +1,57 @@
+CREDIT AGREEMENT
+RETAIL BORROWER INC. (J.Crew Style Structure)
+Dated: June 2024
+
+═══════════════════════════════════════════════════════════════════════════════
+ARTICLE VII - NEGATIVE COVENANTS
+═══════════════════════════════════════════════════════════════════════════════
+
+Section 7.08. Designation of Unrestricted Subsidiaries and Asset Transfers.
+
+(a) Designation. The Borrower may at any time designate any existing Restricted
+    Subsidiary as an Unrestricted Subsidiary or form a new Unrestricted Subsidiary.
+
+(b) Asset Transfers. The Borrower may transfer any assets or property to an
+    Unrestricted Subsidiary, including, without limitation:
+    
+    (i) intellectual property (including patents, trademarks, trade names, brands,
+        copyrights, and trade secrets);
+    
+    (ii) real property and equipment;
+    
+    (iii) inventory and accounts receivable;
+    
+    (iv) equity interests in Subsidiaries;
+    
+    (v) any other tangible or intangible assets.
+
+(c) Basket Size. The aggregate fair market value of all designations, investments,
+    loans, and asset transfers to Unrestricted Subsidiaries shall not exceed the
+    GREATER OF:
+    
+    (i) $250,000,000; and
+    
+    (ii) 25% of Consolidated Total Assets at the time of such transaction.
+
+(d) Consent. No consent of any Lender shall be required for any transaction
+    contemplated by this Section 7.08, provided that the Borrower delivers a
+    certificate from the Chief Financial Officer certifying compliance with the
+    basket in clause (c).
+
+(e) Use of Proceeds. There shall be no restriction on the use of assets by an
+    Unrestricted Subsidiary, including but not limited to incurrence of debt,
+    making restricted payments, or engaging in transactions with Affiliates.
+
+(f) Precedent Transactions. The parties acknowledge that this structure is modeled
+    after transactions commonly referred to as "J.Crew" or "Chewy" style dropdowns,
+    whereby valuable assets (including the "crown jewels" intellectual property)
+    may be transferred outside the restricted group.
+
+CRITICAL LME RISK FACTORS:
+• $250M OR 25% of assets basket - MATERIAL SIZE
+• IP transfer explicitly permitted - CROWN JEWELS AT RISK
+• No lender consent required - UNILATERAL BORROWER ACTION
+• No restrictions on Unrestricted Sub activities
+• No sweep or mandatory prepayment
+• "J.Crew" and "Chewy" precedent language
+• LEAKAGE RISK SCORE: 9.5/10.0 (CRITICAL)

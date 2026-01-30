@@ -1,0 +1,203 @@
+# Signal Triage Code Ownership
+# 
+# Each line is a file pattern followed by one or more owners.
+# Owners can be @username, @org/team-name, or email addresses.
+# 
+# When a pull request modifies files matching a pattern, the owners
+# are automatically requested for review.
+#
+# For multi-agent systems, this enables automated review assignment
+# to ensure the right expertise reviews each change.
+
+# ============================================================================
+# Global Owners (fallback for any file not matched below)
+# ============================================================================
+* @orchestration-team
+
+# ============================================================================
+# Agent-Specific Code Ownership
+# ============================================================================
+
+# Author Agent (Document Ingestion & APIs)
+/signal_triage/ingest/ @author-team
+/signal_triage/api/ @author-team
+/signal_triage/cli.py @author-team
+/tests/test_ingest*.py @author-team
+/tests/test_document_intel.py @author-team
+
+# Librarian Agent (Covenant Extraction & LME Detection)
+/signal_triage/document_intel/ @librarian-team
+/signal_triage/lme_parser.py @librarian-team
+/signal_triage/lme_definitions.py @librarian-team
+/signal_triage/signals_io.py @librarian-team
+/tests/test_librarian.py @librarian-team
+/tests/test_enhanced_parser.py @librarian-team
+/tests/test_lme_parser.py @librarian-team
+
+# Quant Agent (Recovery Waterfall & Sensitivity)
+/signal_triage/recovery_engine.py @quant-team
+/signal_triage/covenant_forensics.py @quant-team
+/signal_triage/chapter11_modeling.py @quant-team
+/tests/test_recovery_engine.py @quant-team
+/tests/test_covenant_forensics.py @quant-team
+
+# Benchmarker Agent (Market Context & Precedents)
+/signal_triage/agents/benchmarker.py @benchmarker-team
+/signal_triage/api/sec_edgar.py @benchmarker-team
+/signal_triage/api/market_pricing.py @benchmarker-team
+/tests/test_benchmarker.py @benchmarker-team
+/tests/test_market_data*.py @benchmarker-team
+
+# Auditor Agent (Stress-Testing & Validation)
+/signal_triage/agents/auditor.py @auditor-team
+/signal_triage/agents/evidence_verifier.py @auditor-team
+/tests/test_auditor.py @auditor-team
+/tests/test_validation.py @auditor-team
+/tests/test_evidence_verifier.py @auditor-team
+
+# Comparator Agent (Delta Analysis)
+/signal_triage/agents/comparator.py @comparator-team
+/tests/test_comparator.py @comparator-team
+
+# Reporter Agent (Final Reports & Portfolio Summary)
+/signal_triage/reports/ @reporter-team
+/signal_triage/agents/batch_portfolio.py @reporter-team
+/signal_triage/agents/summary_narrative.py @reporter-team
+/tests/test_document_report.py @reporter-team
+/tests/test_batch_portfolio.py @reporter-team
+
+# ============================================================================
+# Pipeline & Orchestration
+# ============================================================================
+/signal_triage/pipeline.py @orchestration-team
+/tests/test_pipeline.py @orchestration-team
+
+# ============================================================================
+# Infrastructure & DevOps
+# ============================================================================
+/Dockerfile @devops-team
+/docker-compose.yml @devops-team
+/.dockerignore @devops-team
+/.github/workflows/ @devops-team
+/scripts/ @devops-team
+
+# ============================================================================
+# Configuration Files
+# ============================================================================
+/signals_config.json @librarian-team @quant-team
+/.env.example @devops-team
+/.env.cloud.example @devops-team
+/setup.py @devops-team
+/requirements*.txt @devops-team
+
+# ============================================================================
+# Documentation
+# ============================================================================
+/docs/ @documentation-team
+/README*.md @documentation-team
+/CONTRIBUTING.md @documentation-team
+/CHANGELOG.md @documentation-team
+/LICENSE @legal-team
+
+# Agent Documentation (co-ownership: doc team + agent team)
+/.cursor/agents/author.md @documentation-team @author-team
+/.cursor/agents/librarian.md @documentation-team @librarian-team
+/.cursor/agents/quant.md @documentation-team @quant-team
+/.cursor/agents/benchmarker.md @documentation-team @benchmarker-team
+/.cursor/agents/auditor.md @documentation-team @auditor-team
+/.cursor/agents/comparator.md @documentation-team @comparator-team
+/.cursor/agents/reporter.md @documentation-team @reporter-team
+/.cursor/agents/ORCHESTRATION.md @documentation-team @orchestration-team
+
+# Agent Integration Documentation
+/AGENTS.md @documentation-team @orchestration-team
+/.github/agent-registry.json @orchestration-team
+/.github/agent-context/ @documentation-team @orchestration-team
+/docs/AGENT_PROTOCOL.md @documentation-team @orchestration-team
+
+# Roadmap & Planning
+/docs/ROADMAP.md @orchestration-team @all-agents
+/INFRASTRUCTURE_SUMMARY.md @devops-team @documentation-team
+
+# ============================================================================
+# Testing Infrastructure
+# ============================================================================
+/tests/fixtures/ @testing-team @all-agents
+/tests/conftest.py @testing-team
+/.pytest.ini @testing-team
+/.coveragerc @testing-team
+
+# Benchmark Corpus
+/tests/fixtures/benchmark_corpus/ @testing-team @librarian-team
+/tests/fixtures/validation_suite/ @testing-team @auditor-team
+
+# ============================================================================
+# API & Web Interface
+# ============================================================================
+/run_api_server.py @api-team
+/signal_triage/ui/ @ui-team
+/test_api*.py @api-team
+
+# ============================================================================
+# Security & Compliance
+# ============================================================================
+/.bandit @security-team
+/.pre-commit-config.yaml @security-team
+/SECURITY.md @security-team
+
+# ============================================================================
+# Examples & Case Studies
+# ============================================================================
+/examples/ @documentation-team @all-agents
+/examples/jcrew/ @librarian-team @documentation-team
+/examples/serta/ @librarian-team @documentation-team
+/examples/hertz/ @librarian-team @documentation-team
+
+# ============================================================================
+# Demo Scripts
+# ============================================================================
+/demo_*.py @documentation-team
+/quickstart.py @documentation-team
+
+# ============================================================================
+# Special Ownership Rules
+# ============================================================================
+
+# Critical financial math (requires Quant + Auditor review)
+/signal_triage/recovery_engine.py @quant-team @auditor-team
+
+# LME detection (requires Librarian + Auditor review)
+/signal_triage/lme_parser.py @librarian-team @auditor-team
+/signal_triage/lme_definitions.py @librarian-team @auditor-team
+
+# Pipeline orchestration (requires all agent leads)
+/signal_triage/pipeline.py @author-team @librarian-team @quant-team @benchmarker-team @auditor-team @comparator-team @reporter-team
+
+# Agent registry (requires orchestration + all agents)
+/.github/agent-registry.json @orchestration-team @all-agents
+
+# Deployment configs (requires DevOps + Security)
+/Dockerfile @devops-team @security-team
+/docker-compose.yml @devops-team @security-team
+/render.yaml @devops-team @security-team
+/fly.toml @devops-team @security-team
+
+# ============================================================================
+# Team Aliases (for reference - configure in GitHub Organization)
+# ============================================================================
+# @orchestration-team - Overall architecture & coordination
+# @author-team - Document ingestion & API integration
+# @librarian-team - Covenant extraction & LME detection
+# @quant-team - Financial modeling & waterfall
+# @benchmarker-team - Market data & precedents
+# @auditor-team - Validation & stress-testing
+# @comparator-team - Delta analysis & comparison
+# @reporter-team - Final reports & output
+# @devops-team - Infrastructure & deployment
+# @security-team - Security & compliance
+# @documentation-team - Documentation & guides
+# @testing-team - Test infrastructure & QA
+# @api-team - REST API development
+# @ui-team - Dashboard & UI
+# @legal-team - Legal & licensing
+# @all-agents - All agent team leads

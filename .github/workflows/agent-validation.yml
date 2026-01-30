@@ -1,0 +1,325 @@
+name: Agent Validation
+
+on:
+  pull_request:
+    paths:
+      - 'signal_triage/**'
+      - '.cursor/agents/**'
+      - 'tests/**'
+      - '.github/agent-registry.json'
+  push:
+    branches:
+      - main
+    paths:
+      - 'signal_triage/**'
+      - '.cursor/agents/**'
+
+jobs:
+  detect-agent-changes:
+    name: Detect Changed Agents
+    runs-on: ubuntu-latest
+    outputs:
+      agents: ${{ steps.detect.outputs.agents }}
+      has_changes: ${{ steps.detect.outputs.has_changes }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Detect changed agents
+        id: detect
+        run: |
+          # Get list of changed files
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+          else
+            FILES=$(git diff --name-only HEAD~1 HEAD)
+          fi
+          
+          echo "Changed files:"
+          echo "$FILES"
+          
+          # Detect which agents changed
+          AGENTS=""
+          
+          if echo "$FILES" | grep -q "signal_triage/ingest/\|signal_triage/api/\|signal_triage/cli.py"; then
+            AGENTS="$AGENTS author"
+          fi
+          
+          if echo "$FILES" | grep -q "signal_triage/document_intel/\|signal_triage/lme_parser.py"; then
+            AGENTS="$AGENTS librarian"
+          fi
+          
+          if echo "$FILES" | grep -q "signal_triage/recovery_engine.py\|signal_triage/covenant_forensics.py"; then
+            AGENTS="$AGENTS quant"
+          fi
+          
+          if echo "$FILES" | grep -q "signal_triage/agents/benchmarker.py\|signal_triage/api/sec_edgar.py"; then
+            AGENTS="$AGENTS benchmarker"
+          fi
+          
+          if echo "$FILES" | grep -q "signal_triage/agents/auditor.py\|signal_triage/agents/evidence_verifier.py"; then
+            AGENTS="$AGENTS auditor"
+          fi
+          
+          if echo "$FILES" | grep -q "signal_triage/agents/comparator.py"; then
+            AGENTS="$AGENTS comparator"
+          fi
+          
+          if echo "$FILES" | grep -q "signal_triage/reports/\|signal_triage/agents/batch_portfolio.py"; then
+            AGENTS="$AGENTS reporter"
+          fi
+          
+          # Remove duplicates and format as JSON array
+          AGENTS=$(echo "$AGENTS" | tr ' ' '\n' | sort -u | tr '\n' ' ' | sed 's/ $//')
+          AGENTS_JSON=$(echo "$AGENTS" | jq -R -s -c 'split(" ") | map(select(length > 0))')
+          
+          echo "agents=$AGENTS_JSON" >> $GITHUB_OUTPUT
+          
+          if [ -n "$AGENTS" ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+          
+          echo "Detected agent changes: $AGENTS"
+
+  validate-agent-tests:
+    name: Validate Agent Tests
+    needs: detect-agent-changes
+    if: needs.detect-agent-changes.outputs.has_changes == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        agent: ${{ fromJson(needs.detect-agent-changes.outputs.agents) }}
+      fail-fast: false
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov
+      
+      - name: Run agent-specific tests
+        run: |
+          # Map agent names to test files
+          case "${{ matrix.agent }}" in
+            author)
+              pytest tests/test_ingest*.py tests/test_document_intel.py -v --cov=signal_triage/ingest --cov=signal_triage/api
+              ;;
+            librarian)
+              pytest tests/test_librarian.py tests/test_enhanced_parser.py tests/test_lme_parser.py -v --cov=signal_triage/document_intel --cov=signal_triage/lme_parser.py
+              ;;
+            quant)
+              pytest tests/test_recovery_engine.py tests/test_covenant_forensics.py -v --cov=signal_triage/recovery_engine.py
+              ;;
+            benchmarker)
+              pytest tests/test_benchmarker.py tests/test_market_data*.py -v --cov=signal_triage/agents/benchmarker.py
+              ;;
+            auditor)
+              pytest tests/test_auditor.py tests/test_validation.py tests/test_evidence_verifier.py -v --cov=signal_triage/agents/auditor.py
+              ;;
+            comparator)
+              pytest tests/test_comparator.py -v --cov=signal_triage/agents/comparator.py
+              ;;
+            reporter)
+              pytest tests/test_document_report.py tests/test_batch_portfolio.py -v --cov=signal_triage/reports
+              ;;
+            *)
+              echo "Unknown agent: ${{ matrix.agent }}"
+              exit 1
+              ;;
+          esac
+      
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v4
+        with:
+          flags: ${{ matrix.agent }}
+          name: ${{ matrix.agent }}-coverage
+
+  validate-agent-documentation:
+    name: Validate Agent Documentation
+    needs: detect-agent-changes
+    if: needs.detect-agent-changes.outputs.has_changes == 'true'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Check if agent docs updated
+        run: |
+          # Get list of changed files
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD)
+          else
+            FILES=$(git diff --name-only HEAD~1 HEAD)
+          fi
+          
+          # Check if agent code changed
+          AGENT_CODE_CHANGED=false
+          if echo "$FILES" | grep -q "signal_triage/"; then
+            AGENT_CODE_CHANGED=true
+          fi
+          
+          # Check if agent docs changed
+          AGENT_DOCS_CHANGED=false
+          if echo "$FILES" | grep -q ".cursor/agents/\|AGENTS.md\|agent-registry.json\|AGENT_PROTOCOL.md"; then
+            AGENT_DOCS_CHANGED=true
+          fi
+          
+          # If code changed but docs didn't, warn (but don't fail)
+          if [ "$AGENT_CODE_CHANGED" = true ] && [ "$AGENT_DOCS_CHANGED" = false ]; then
+            echo "::warning::Agent code changed but documentation not updated. Consider updating .cursor/agents/ files."
+          fi
+
+  validate-pipeline-integration:
+    name: Validate Full Pipeline
+    needs: detect-agent-changes
+    if: needs.detect-agent-changes.outputs.has_changes == 'true'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+      
+      - name: Run pipeline integration tests
+        run: |
+          # Test pipeline with benchmark corpus
+          pytest tests/test_pipeline.py -v
+      
+      - name: Test CLI pipeline execution
+        run: |
+          # Test full pipeline on test document
+          python -m signal_triage.cli tests/fixtures/benchmark_corpus/low_distress.txt --pipeline --no-audit-gate
+          
+          # Verify exit code
+          if [ $? -ne 0 ]; then
+            echo "Pipeline execution failed"
+            exit 1
+          fi
+
+  validate-agent-registry:
+    name: Validate Agent Registry
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Validate agent-registry.json
+        run: |
+          # Check JSON syntax
+          jq empty .github/agent-registry.json
+          
+          # Validate required fields
+          AGENTS=$(jq -r '.agents[].name' .github/agent-registry.json)
+          REQUIRED_AGENTS="author librarian quant benchmarker auditor comparator reporter"
+          
+          for agent in $REQUIRED_AGENTS; do
+            if ! echo "$AGENTS" | grep -q "^$agent$"; then
+              echo "Missing agent in registry: $agent"
+              exit 1
+            fi
+          done
+          
+          echo "Agent registry validation passed"
+      
+      - name: Check agent documentation exists
+        run: |
+          # Verify each agent has documentation
+          AGENTS=$(jq -r '.agents[].name' .github/agent-registry.json)
+          
+          for agent in $AGENTS; do
+            if [ ! -f ".cursor/agents/$agent.md" ]; then
+              echo "Missing documentation for agent: $agent"
+              exit 1
+            fi
+          done
+          
+          echo "Agent documentation check passed"
+
+  validate-decimal-precision:
+    name: Validate Decimal Precision (Financial Math)
+    needs: detect-agent-changes
+    if: |
+      needs.detect-agent-changes.outputs.has_changes == 'true' &&
+      contains(needs.detect-agent-changes.outputs.agents, 'quant')
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check for float usage in financial calculations
+        run: |
+          # Check recovery_engine.py for float usage (should use Decimal)
+          if grep -n "float(" signal_triage/recovery_engine.py; then
+            echo "::error::Found float() usage in recovery_engine.py - must use Decimal for financial math"
+            exit 1
+          fi
+          
+          # Check for bare division that might create floats
+          if grep -n "[0-9]\+\.[0-9]\+" signal_triage/recovery_engine.py | grep -v "Decimal"; then
+            echo "::warning::Found numeric literals in recovery_engine.py - ensure they're wrapped in Decimal()"
+          fi
+          
+          echo "Decimal precision check passed"
+
+  comment-on-pr:
+    name: Comment Agent Validation Results
+    needs: [detect-agent-changes, validate-agent-tests, validate-pipeline-integration]
+    if: always() && github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Comment PR with results
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const agents = ${{ needs.detect-agent-changes.outputs.agents }};
+            const hasChanges = '${{ needs.detect-agent-changes.outputs.has_changes }}' === 'true';
+            
+            if (!hasChanges) {
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: '✅ No agent code changes detected - validation skipped'
+              });
+              return;
+            }
+            
+            const testStatus = '${{ needs.validate-agent-tests.result }}';
+            const pipelineStatus = '${{ needs.validate-pipeline-integration.result }}';
+            
+            let body = '## Agent Validation Results\n\n';
+            body += `**Changed Agents:** ${agents.join(', ')}\n\n`;
+            body += `- Agent Tests: ${testStatus === 'success' ? '✅ Passed' : '❌ Failed'}\n`;
+            body += `- Pipeline Integration: ${pipelineStatus === 'success' ? '✅ Passed' : '❌ Failed'}\n`;
+            
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });

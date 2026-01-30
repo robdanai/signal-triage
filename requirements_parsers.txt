@@ -1,0 +1,17 @@
+# Additional Document Parsing Libraries
+# Install these for full file format support in Document Analysis workstream
+
+# PDF parsing (required for .pdf files)
+pdfplumber>=0.10.0
+
+# Word document parsing (required for .docx, .doc files)
+python-docx>=1.0.0
+
+# RTF parsing (required for .rtf files)
+striprtf>=0.0.26
+
+# Alternative PDF parser (optional, more features)
+# PyPDF2>=3.0.0
+
+# Alternative Word parser (optional)
+# docx2txt>=0.8

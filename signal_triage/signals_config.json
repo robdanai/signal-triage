@@ -1,0 +1,357 @@
+{
+  "schema_version": "1.0",
+  "config_name": "distress_signals",
+  "signals": [
+    {
+      "id": "going_concern",
+      "name": "Going concern",
+      "description": "Going concern language indicating substantial doubt about ability to continue",
+      "weight": 18,
+      "phrases": [
+        "going concern",
+        "substantial doubt",
+        "ability to continue as a going concern",
+        "doubt about the entity's ability",
+        "significant doubt"
+      ]
+    },
+    {
+      "id": "liquidity_covenant",
+      "name": "Liquidity / covenant breach",
+      "description": "Liquidity shortfall or covenant breach",
+      "weight": 20,
+      "phrases": [
+        "covenant breach",
+        "covenant default",
+        "waiver",
+        "material adverse",
+        "mac",
+        "material adverse change",
+        "cure period",
+        "event of default",
+        "liquidity shortfall",
+        "insufficient liquidity"
+      ]
+    },
+    {
+      "id": "debt_maturity_refinancing",
+      "name": "Debt maturity / refinancing risk",
+      "description": "Debt maturity wall or refinancing risk",
+      "weight": 16,
+      "phrases": [
+        "maturity wall",
+        "refinancing risk",
+        "debt maturity",
+        "upcoming maturities",
+        "unable to refinance",
+        "refinancing uncertainty",
+        "maturity concentration"
+      ]
+    },
+    {
+      "id": "auditor_emphasis",
+      "name": "Auditor emphasis of matter",
+      "description": "Auditor emphasis of matter or going concern paragraph",
+      "weight": 18,
+      "phrases": [
+        "emphasis of matter",
+        "emphasis of matter paragraph",
+        "auditor's emphasis",
+        "qualified opinion",
+        "material uncertainty",
+        "material uncertainty related to going concern"
+      ]
+    },
+    {
+      "id": "covenant_risk",
+      "name": "Covenant / waiver risk",
+      "description": "Covenant or waiver language (legacy)",
+      "weight": 15,
+      "phrases": [
+        "covenant breach",
+        "covenant default",
+        "waiver",
+        "material adverse",
+        "material adverse change",
+        "cure period",
+        "event of default"
+      ]
+    },
+    {
+      "id": "potential_default",
+      "name": "Potential default",
+      "description": "Default or acceleration language",
+      "weight": 20,
+      "phrases": [
+        "event of default",
+        "default under",
+        "cross-default",
+        "acceleration"
+      ]
+    },
+    {
+      "id": "dropdown",
+      "name": "Dropdown / guarantee release",
+      "description": "Transfer of assets from guarantor subsidiaries into unrestricted subs or release of guarantees; value can be pledged to new debt without sharing with existing lenders (J.Crew-style).",
+      "weight": 8,
+      "phrases": [
+        "release of guarantees",
+        "subsidiary guarantee",
+        "restriction on upstream",
+        "dividend stopper",
+        "j.crew",
+        "restricted subsidiary",
+        "unrestricted subsidiary",
+        "guarantee release",
+        "drop down",
+        "dropdown"
+      ]
+    },
+    {
+      "id": "sprime_leakage",
+      "name": "S-Prime / collateral leakage",
+      "description": "Priming of junior secured debt ahead of existing liens or covenant/structural features that allow value to leave the secured group; dilutes first-lien recovery.",
+      "weight": 10,
+      "phrases": [
+        "first lien",
+        "second lien",
+        "primed",
+        "priming",
+        "adequate protection",
+        "collateral",
+        "security interest",
+        "leakage",
+        "sprime",
+        "s-prime"
+      ]
+    },
+    {
+      "id": "uptiering",
+      "name": "Uptiering",
+      "description": "Participating lenders consent to new debt ranking above existing debt (superpriority, roll-up); non-participating lenders left junior without consent.",
+      "weight": 12,
+      "phrases": [
+        "uptier",
+        "uptiering",
+        "superpriority",
+        "roll-up",
+        "priming lien",
+        "dip",
+        "exit facility",
+        "debtor-in-possession"
+      ]
+    },
+    {
+      "id": "texas_two_step",
+      "name": "Texas two-step / structural merger",
+      "description": "Divisional or divisive merger separating liabilities from operating assets (e.g. mass tort in one entity); can reshape which assets back which creditors.",
+      "weight": 12,
+      "phrases": [
+        "texas two step",
+        "texas two-step",
+        "two-step",
+        "two step merger",
+        "divisional merger",
+        "divisive merger",
+        "liability management transaction",
+        "LMT transaction",
+        "split-off",
+        "spin-off",
+        "divisional split"
+      ]
+    },
+    {
+      "id": "double_dip_triple_dip",
+      "name": "Double-dip / triple-dip",
+      "description": "Structure creating multiple claims on same economic exposure (non-guarantor/empty-box sub, intercompany loan, parent guarantee); dilutes recovery for existing lenders.",
+      "weight": 12,
+      "phrases": [
+        "double dip",
+        "double-dip",
+        "triple dip",
+        "triple-dip",
+        "empty box",
+        "non-guarantor subsidiary",
+        "non-guarantor sub",
+        "multiple claims on same",
+        "intercompany loan",
+        "double recovery"
+      ]
+    },
+    {
+      "id": "consent_solicitation_exchange",
+      "name": "Consent solicitation / exchange / tender",
+      "description": "Out-of-court LME: consent solicitation (amendments for consent payment), exchange offer, tender offer, amend-and-extend; can change priority without bankruptcy.",
+      "weight": 11,
+      "phrases": [
+        "consent solicitation",
+        "consent payment",
+        "exchange offer",
+        "tender offer",
+        "solicitation of consents",
+        "amend and extend",
+        "amend & extend",
+        "out-of-court restructuring"
+      ]
+    },
+    {
+      "id": "equity_cure",
+      "name": "Equity cure",
+      "description": "Right for borrower or sponsor to inject equity to cure a covenant breach and avoid default; often limited by frequency and dollar cap.",
+      "weight": 10,
+      "phrases": [
+        "equity cure",
+        "equity injection",
+        "covenant cure",
+        "equity contribution",
+        "cure right",
+        "equity cure right",
+        "cure by equity"
+      ]
+    },
+    {
+      "id": "substantive_consolidation_cramdown",
+      "name": "Substantive consolidation / cramdown",
+      "description": "Substantive consolidation (merging entities' assets/liabilities in bankruptcy); cramdown (plan confirmed over objection); absolute priority and fair and equitable.",
+      "weight": 12,
+      "phrases": [
+        "substantive consolidation",
+        "substantively consolidated",
+        "cramdown",
+        "cram-down",
+        "cram down",
+        "absolute priority",
+        "fair and equitable",
+        "plan confirmation"
+      ]
+    },
+    {
+      "id": "lender_voting_squeeze",
+      "name": "Lender voting squeeze",
+      "description": "Document mechanics allowing majority/required lenders to amend without consent of non-consenting or out-of-the-money lenders (yank-a-bank, snooze-you-lose).",
+      "weight": 11,
+      "phrases": [
+        "yank-a-bank",
+        "yank a bank",
+        "replaceable lender",
+        "required lender",
+        "majority lender",
+        "non-consenting lender",
+        "non-consenting",
+        "snooze you lose",
+        "snooze-you-lose",
+        "amendment without consent",
+        "out-of-the-money lenders"
+      ]
+    },
+    {
+      "id": "forbearance_standstill",
+      "name": "Forbearance / standstill",
+      "description": "Lenders agree not to exercise remedies (forbearance) or to refrain from enforcing (standstill) for a period; indicates default or workout mode.",
+      "weight": 10,
+      "phrases": [
+        "forbearance",
+        "forbearance agreement",
+        "standstill",
+        "standstill agreement",
+        "forbearance period",
+        "waiver and forbearance"
+      ]
+    },
+    {
+      "id": "crossover_prepack",
+      "name": "Crossover / bridge / prepack",
+      "description": "Financing intended to cross into Ch. 11 (crossover/bridge); prepack or pre-arranged bankruptcy; plan support agreement. Indicates contemplated or agreed bankruptcy path.",
+      "weight": 12,
+      "phrases": [
+        "crossover facility",
+        "crossover financing",
+        "bridge facility",
+        "bridge financing",
+        "prepack",
+        "pre-pack",
+        "prepackaged",
+        "pre-arranged bankruptcy",
+        "prearranged",
+        "plan support agreement"
+      ]
+    },
+    {
+      "id": "make_whole_disallowance",
+      "name": "Make-whole / disallowance",
+      "description": "Make-whole premium on early redemption/acceleration; in bankruptcy, claim disallowance (§ 502(b)) and unmatured interest can reduce allowed claim and recovery.",
+      "weight": 10,
+      "phrases": [
+        "make-whole",
+        "make whole",
+        "makewhole",
+        "disallowance",
+        "claim disallowance",
+        "unmatured interest",
+        "section 502(b)"
+      ]
+    },
+    {
+      "id": "pik",
+      "name": "Payment-in-kind (PIK)",
+      "description": "Interest paid in kind (added to principal) or PIK toggle (borrower elects PIK instead of cash); common in stressed structures; election signals covenant or liquidity pressure.",
+      "weight": 9,
+      "phrases": [
+        "payment-in-kind",
+        "payment in kind",
+        "PIK interest",
+        "PIK toggle",
+        "PIK toggle right",
+        "pay-in-kind",
+        "pay in kind"
+      ]
+    },
+    {
+      "id": "jcrew_blocker",
+      "name": "J.Crew blocker / anti-dropdown",
+      "description": "Covenant provision restricting transfer of IP or key assets to unrestricted subsidiaries (J.Crew 2017: $250M IP dropdown); presence protects lenders, absence is critical vulnerability.",
+      "weight": 13,
+      "phrases": [
+        "j.crew blocker",
+        "j crew blocker",
+        "anti-dropdown",
+        "ip transfer blocker",
+        "envision blocker",
+        "chewy blocker",
+        "blocker on unrestricted",
+        "restriction on ip transfer",
+        "ip cannot be transferred to unrestricted"
+      ]
+    },
+    {
+      "id": "serta_uptier",
+      "name": "Serta / Rite Aid uptier",
+      "description": "Non-consensual uptier where majority lenders (>50%) issue super-priority debt, subordinating minority without consent (Serta 2020, Rite Aid 2020); lender-on-lender violence.",
+      "weight": 13,
+      "phrases": [
+        "serta",
+        "rite aid",
+        "non-consensual uptier",
+        "lender-on-lender violence",
+        "majority lender uptier",
+        "non-participating lenders subordinated"
+      ]
+    },
+    {
+      "id": "incora_wesco_vote_rigging",
+      "name": "Incora / Wesco vote rigging",
+      "description": "Strategic debt issuance to affiliates to manipulate voting thresholds and achieve synthetic majority (Incora/Wesco 2020); forces non-participating lenders into amendments.",
+      "weight": 13,
+      "phrases": [
+        "incora",
+        "wesco",
+        "strategic debt issuance",
+        "vote threshold manipulation",
+        "artificial lender consent",
+        "synthetic majority",
+        "debt issued to affiliate to manipulate vote"
+      ]
+    }
+  ],
+  "default_signal_confidence": 0.85
+}

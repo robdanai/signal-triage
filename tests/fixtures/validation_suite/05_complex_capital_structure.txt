@@ -1,0 +1,47 @@
+CREDIT AGREEMENT
+LEVERAGED BUYOUT TARGET
+Dated: October 2024
+
+═══════════════════════════════════════════════════════════════════════════════
+CAPITAL STRUCTURE SUMMARY
+═══════════════════════════════════════════════════════════════════════════════
+
+Facility                          Principal Amount    Maturity      Interest Rate      Security                Guarantees
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Super Senior RCF                  $75,000,000        Oct 2027      SOFR + 300 bps     First Priority          All Subsidiaries
+First Lien Term Loan A            $400,000,000       Oct 2029      SOFR + 450 bps     First Priority          All Subsidiaries
+First Lien Term Loan B            $600,000,000       Oct 2030      SOFR + 500 bps     First Priority          All Subsidiaries
+Second Lien Term Loan             $300,000,000       Oct 2031      SOFR + 850 bps     Second Priority         All Subsidiaries
+Senior Unsecured Notes            $200,000,000       Oct 2028      9.50% Fixed        No Collateral           Non-Guaranteed
+Subordinated PIK Toggle Notes     $100,000,000       Oct 2032      12.00%/14.00% PIK  No Collateral           Non-Guaranteed
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Total Debt Outstanding:           $1,675,000,000
+
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+SENIORITY WATERFALL
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+Priority 1 (Pari Passu):
+  • Super Senior RCF ($75M)
+  • First Lien Term Loan A ($400M)
+  • First Lien Term Loan B ($600M)
+  Total First Lien: $1,075M
+
+Priority 2:
+  • Second Lien Term Loan ($300M)
+
+Priority 3:
+  • Senior Unsecured Notes ($200M)
+
+Priority 4:
+  • Subordinated PIK Toggle Notes ($100M)
+
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+INTERCREDITOR AGREEMENTS
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+• First Lien / Second Lien Intercreditor Agreement
+• Subordination Agreement for Unsecured and Subordinated Notes
+• Payment blockage provisions during payment defaults
+• Standstill periods for junior lienholders

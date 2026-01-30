@@ -1,0 +1,28 @@
+{
+  "source_file": "C:\\Users\\PGD\\AppData\\Local\\Temp\\tmp1_r44g6q.txt",
+  "trap_doors": [],
+  "lme_signals": [],
+  "capital_structure": {
+    "tranches": [
+      {
+        "name": "Senior Secured",
+        "claim": 300
+      },
+      {
+        "name": "Mezz",
+        "claim": 150
+      },
+      {
+        "name": "Unsecured",
+        "claim": 100
+      }
+    ],
+    "default_ev": 350
+  },
+  "metadata": {
+    "trap_door_count": 0,
+    "lme_count": 0,
+    "total_chunks": 1,
+    "total_segments": 1
+  }
+}

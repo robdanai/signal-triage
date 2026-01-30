@@ -1,0 +1,53 @@
+CREDIT AGREEMENT
+MANUFACTURING CO.
+Dated: September 2024
+
+═══════════════════════════════════════════════════════════════════════════════
+ARTICLE VII - NEGATIVE COVENANTS
+═══════════════════════════════════════════════════════════════════════════════
+
+Section 7.05. Limitation on Asset Sales and Dispositions.
+
+(a) Permitted Dispositions. The Borrower may make Asset Sales:
+    
+    (i) in the ordinary course of business (including sales of inventory, obsolete
+        equipment, and worn-out assets);
+    
+    (ii) other Asset Sales in an aggregate fair market value not to exceed
+        $500,000,000 in any fiscal year (the "Annual Asset Sale Basket");
+    
+    (iii) without the consent or approval of any Lender.
+
+(b) Fair Market Value. All Asset Sales must be made for fair market value, as
+    determined in good faith by the Board of Directors of the Borrower.
+
+(c) Consideration. At least 75% of the consideration for any Asset Sale must
+    consist of cash or Cash Equivalents (with the remaining 25% permitted to be
+    non-cash consideration, including promissory notes, earn-outs, or equity).
+
+(d) Mandatory Prepayment. The Net Cash Proceeds of Asset Sales in excess of
+    $200,000,000 in the aggregate during any fiscal year shall be applied to
+    mandatory prepayment of the Term Loans in accordance with Section 2.05(b).
+    
+    For clarity, the first $200,000,000 of Net Cash Proceeds in any fiscal year
+    may be retained by the Borrower and used for any corporate purpose, including
+    investments, acquisitions, restricted payments, or general corporate purposes,
+    without any requirement to prepay the Term Loans.
+
+(e) No Restrictions. This Section 7.05 shall not restrict:
+    
+    (i) sales or dispositions in the ordinary course of business;
+    
+    (ii) sales of assets that are obsolete, surplus, or no longer useful;
+    
+    (iii) sales to wholly-owned Restricted Subsidiaries.
+
+LEAKAGE ANALYSIS:
+• $500M annual basket - VERY LARGE
+• Only $200M sweep threshold - WEAK PROTECTION (only 40% sweep)
+• $200M can be retained for any purpose - NO RESTRICTIONS
+• 75% cash requirement - ALLOWS 25% NON-CASH CONSIDERATION
+• Fair market value standard - VALUATION GAMING RISK
+• No lender consent required - UNILATERAL BORROWER ACTION
+• Ordinary course exemption - POTENTIAL FOR ABUSE
+• ASSET SALE LEAKAGE RISK SCORE: 7.5/10.0 (HIGH)

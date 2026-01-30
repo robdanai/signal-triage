@@ -1,0 +1,15 @@
+---
+description: When editing Signal Triage, apply improvement checklist and keep agent handoffs intact.
+globs: signal_triage/**/*.py, tests/**/*.py
+---
+
+When editing code in this project:
+
+- After adding or changing logic, add or update tests in `tests/` that cover the change.
+- Use type hints for new or modified function signatures.
+- Add a one-line docstring for new public functions or classes.
+- When touching the pipeline or CLI, run once: `py -m signal_triage.cli tests/fixtures/benchmark_corpus/low_distress.txt --pipeline` to confirm no regression.
+- When pipeline or agent behavior changes, update `docs/ROADMAP.md` and `.cursor/agents/ORCHESTRATION.md` so plans match code.
+- Do not break handoffs: Author (provenance, config versions), Librarian (section/page, collateral_leakage_flags), Quant (Decimal, situational_summary), Auditor (stress test, gate), Reporter (auditable report shape).
+
+See `docs/IMPROVEMENT_CHECKLIST.md` for the full checklist.

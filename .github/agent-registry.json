@@ -1,0 +1,264 @@
+{
+  "version": "1.0.0",
+  "project": "signal-triage",
+  "description": "Institutional-grade forensic decision engine for distressed investing",
+  "orchestration_type": "sequential_pipeline",
+  "agents": [
+    {
+      "name": "author",
+      "role": "Ingestion & APIs",
+      "model": "claude-4.5-sonnet-thinking",
+      "cli_command": "python -m signal_triage.cli <file> --author",
+      "api_endpoint": "/api/v1/agent/author/execute",
+      "owned_paths": [
+        "signal_triage/ingest/",
+        "signal_triage/cli.py",
+        "signal_triage/api/"
+      ],
+      "inputs": [
+        "document_path",
+        "document_url",
+        "edgar_accession"
+      ],
+      "outputs": [
+        "document_chunks",
+        "provenance",
+        "page_numbers",
+        "section_labels"
+      ],
+      "dependencies": [],
+      "documentation": ".cursor/agents/author.md",
+      "description": "Owns document ingestion (PDF, text, web/URL), API integrations for market data (SEC EDGAR, financial providers), and versioned configs for reproducibility."
+    },
+    {
+      "name": "librarian",
+      "role": "Covenant Extraction",
+      "model": "claude-4.5-sonnet-thinking",
+      "cli_command": "python -m signal_triage.cli <file> --librarian",
+      "api_endpoint": "/api/v1/agent/librarian/execute",
+      "owned_paths": [
+        "signal_triage/document_intel/",
+        "signal_triage/lme_parser.py",
+        "signal_triage/signals_io.py"
+      ],
+      "inputs": [
+        "document_chunks",
+        "provenance"
+      ],
+      "outputs": [
+        "covenants",
+        "baskets",
+        "signals",
+        "collateral_leakage_flags",
+        "lme_risk_scores",
+        "section_page_citations"
+      ],
+      "dependencies": [
+        "author"
+      ],
+      "documentation": ".cursor/agents/librarian.md",
+      "description": "Extracts Negative Covenants, Baskets, and LME 'trap doors' (collateral leakage, J.Crew dropdowns). Performs forensic table extraction (capital structure), EBITDA normalization, and LME risk scoring."
+    },
+    {
+      "name": "quant",
+      "role": "Waterfall & Sensitivity",
+      "model": "gpt-5.2-codex",
+      "cli_command": "python -m signal_triage.cli <file> --waterfall",
+      "api_endpoint": "/api/v1/agent/quant/execute",
+      "owned_paths": [
+        "signal_triage/recovery_engine.py"
+      ],
+      "inputs": [
+        "baskets",
+        "covenant_limits",
+        "collateral_leakage_flags",
+        "market_multiple",
+        "enterprise_value",
+        "debt_tranches"
+      ],
+      "outputs": [
+        "recovery_waterfall",
+        "fulcrum_security",
+        "situational_summary",
+        "tornado_drivers",
+        "apr_violations"
+      ],
+      "dependencies": [
+        "librarian"
+      ],
+      "documentation": ".cursor/agents/quant.md",
+      "description": "Builds recovery waterfall with Decimal precision, identifies fulcrum security, models LME-adjusted collateral, enforces Absolute Priority Rule, and generates situational summary."
+    },
+    {
+      "name": "benchmarker",
+      "role": "Market Context & Precedents",
+      "model": "gpt-5.2",
+      "cli_command": "python -m signal_triage.cli <file> --benchmark",
+      "api_endpoint": "/api/v1/agent/benchmarker/execute",
+      "owned_paths": [
+        "signal_triage/agents/benchmarker.py",
+        "signal_triage/api/sec_edgar.py",
+        "signal_triage/api/market_pricing.py"
+      ],
+      "inputs": [
+        "ticker",
+        "industry",
+        "geography",
+        "recovery_model"
+      ],
+      "outputs": [
+        "market_multiples",
+        "precedent_recovery_rates",
+        "comparable_transactions",
+        "critical_variance_flags",
+        "yield_spreads",
+        "source_citations"
+      ],
+      "dependencies": [
+        "quant"
+      ],
+      "documentation": ".cursor/agents/benchmarker.md",
+      "description": "Provides market validation via live SEC EDGAR data, precedent transactions, yield spreads, and recovery benchmarking. Flags Critical Variance when model diverges from market."
+    },
+    {
+      "name": "auditor",
+      "role": "Stress-Testing & Validation",
+      "model": "gpt-5.1-codex-mini",
+      "cli_command": "python -m signal_triage.cli <file> --audit",
+      "api_endpoint": "/api/v1/agent/auditor/execute",
+      "owned_paths": [
+        "signal_triage/agents/auditor.py"
+      ],
+      "inputs": [
+        "recovery_model",
+        "situational_summary",
+        "precedent_recovery_rates",
+        "critical_variance_flags",
+        "covenant_evidence"
+      ],
+      "outputs": [
+        "stress_test_results",
+        "apr_validation",
+        "variance_reconciliation",
+        "audit_trail",
+        "pass_fail_status"
+      ],
+      "dependencies": [
+        "quant",
+        "benchmarker"
+      ],
+      "documentation": ".cursor/agents/auditor.md",
+      "description": "Stress-tests recovery model through scenarios, validates APR enforcement, reconciles Critical Variances, maintains audit trail, and acts as gate for final report publication."
+    },
+    {
+      "name": "comparator",
+      "role": "Prior vs Current Analysis",
+      "model": "gemini-3-flash",
+      "cli_command": "python -m signal_triage.cli <file> --compare",
+      "api_endpoint": "/api/v1/agent/comparator/execute",
+      "owned_paths": [
+        "signal_triage/agents/comparator.py"
+      ],
+      "inputs": [
+        "current_analysis",
+        "prior_analysis",
+        "peer_baseline"
+      ],
+      "outputs": [
+        "score_deltas",
+        "tier_deltas",
+        "new_removed_signals",
+        "material_change_narrative"
+      ],
+      "dependencies": [
+        "auditor"
+      ],
+      "documentation": ".cursor/agents/comparator.md",
+      "description": "Compares current analysis vs prior filings or peer baseline. Highlights score/tier deltas, new/removed signals, and generates material-change narrative."
+    },
+    {
+      "name": "reporter",
+      "role": "Final Report & Portfolio Summary",
+      "model": "gpt-5.2",
+      "cli_command": "python -m signal_triage.cli <file> --report",
+      "api_endpoint": "/api/v1/agent/reporter/execute",
+      "owned_paths": [
+        "signal_triage/reports/document_report.py",
+        "signal_triage/agents/batch_portfolio.py",
+        "signal_triage/agents/summary_narrative.py"
+      ],
+      "inputs": [
+        "all_agent_outputs",
+        "auditor_pass_fail",
+        "comparison_deltas"
+      ],
+      "outputs": [
+        "auditable_report",
+        "portfolio_summary",
+        "analyst_checklist",
+        "published_status"
+      ],
+      "dependencies": [
+        "comparator"
+      ],
+      "documentation": ".cursor/agents/reporter.md",
+      "description": "Assembles final analyst-facing report per document and portfolio summary. Aggregates all agent outputs with provenance. Respects Auditor gate for publication."
+    }
+  ],
+  "pipeline": {
+    "full_pipeline_command": "python -m signal_triage.cli <file> --pipeline",
+    "batch_pipeline_command": "python -m signal_triage.cli --pipeline --batch <folder>",
+    "execution_order": [
+      "author",
+      "librarian",
+      "quant",
+      "benchmarker",
+      "auditor",
+      "comparator",
+      "reporter"
+    ],
+    "optional_flags": {
+      "no_audit_gate": "--no-audit-gate",
+      "industry_filter": "--industry <name>",
+      "geography_filter": "--geography <region>",
+      "recursive_batch": "--recursive"
+    },
+    "exit_codes": {
+      "0": "Report published successfully (Auditor passed or gate not required)",
+      "1": "Report not published (Auditor gate failed, Critical Variance unresolved)"
+    }
+  },
+  "api": {
+    "base_url": "http://localhost:8000",
+    "swagger_ui": "http://localhost:8000/docs",
+    "openapi_schema": "http://localhost:8000/openapi.json",
+    "start_command": "python run_api_server.py",
+    "production_command": "python run_api_server.py --production"
+  },
+  "testing": {
+    "test_command": "pytest",
+    "test_count": "120+",
+    "validation_command": "pytest tests/test_validation.py -v",
+    "agent_specific_tests": "pytest tests/test_{agent_name}.py -v",
+    "benchmark_corpus": "tests/fixtures/benchmark_corpus/"
+  },
+  "deployment": {
+    "docker_compose": "docker-compose up -d",
+    "dockerfile": "Dockerfile",
+    "services": [
+      "api (FastAPI on port 8000)",
+      "dashboard (Streamlit on port 8501)",
+      "postgres (port 5432)",
+      "redis (port 6379)"
+    ]
+  },
+  "documentation": {
+    "agent_integration": "AGENTS.md",
+    "project_overview": ".github/agent-context/project-overview.md",
+    "common_tasks": ".github/agent-context/common-tasks.md",
+    "agent_protocol": "docs/AGENT_PROTOCOL.md",
+    "api_guide": "docs/API_GUIDE.md",
+    "roadmap": "docs/ROADMAP.md",
+    "infrastructure": "INFRASTRUCTURE_SUMMARY.md"
+  }
+}

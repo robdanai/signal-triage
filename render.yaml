@@ -1,0 +1,111 @@
+# Render.com deployment configuration for Signal Triage
+# https://render.com/docs/yaml-spec
+
+services:
+  # FastAPI Backend
+  - type: web
+    name: signal-triage-api
+    runtime: python
+    plan: starter  # or standard, professional
+    region: oregon  # or ohio, frankfurt, singapore
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+    startCommand: |
+      uvicorn run_api_server:app --host 0.0.0.0 --port $PORT --workers 4
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: LOG_LEVEL
+        value: INFO
+      - key: API_HOST
+        value: 0.0.0.0
+      - key: API_WORKERS
+        value: 4
+      - key: DATABASE_URL
+        fromDatabase:
+          name: signal-triage-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: signal-triage-redis
+          type: redis
+          property: connectionString
+      - key: SEC_USER_AGENT
+        sync: false  # Set manually in Render dashboard
+      - key: BENCHMARKER_USE_LIVE
+        value: "1"
+      - key: BENCHMARKER_DATA_SOURCE
+        value: edgar
+      - key: API_SECRET_KEY
+        generateValue: true
+      - key: ENABLE_API_CACHE
+        value: "true"
+      - key: SENTRY_DSN
+        sync: false  # Optional: set in dashboard
+      - key: ALPHA_VANTAGE_API_KEY
+        sync: false  # Optional: set in dashboard
+      - key: IEX_CLOUD_API_KEY
+        sync: false  # Optional: set in dashboard
+
+  # Streamlit Dashboard
+  - type: web
+    name: signal-triage-dashboard
+    runtime: python
+    plan: starter
+    region: oregon
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+    startCommand: |
+      streamlit run signal_triage/ui/dashboard.py --server.port $PORT --server.address 0.0.0.0
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11
+      - key: API_URL
+        fromService:
+          name: signal-triage-api
+          type: web
+          property: host
+
+  # Redis Cache
+  - type: redis
+    name: signal-triage-redis
+    plan: starter  # 25MB storage
+    region: oregon
+    ipAllowList: []  # Allow all (or restrict to specific IPs)
+    maxmemoryPolicy: allkeys-lru
+
+databases:
+  # PostgreSQL Database
+  - name: signal-triage-db
+    databaseName: signal_triage
+    user: signal_triage
+    plan: starter  # 256MB RAM, 1GB storage
+    region: oregon
+    ipAllowList: []  # Allow all (or restrict to specific IPs)
+
+# Background Workers (optional - for async job processing)
+# - type: worker
+#   name: signal-triage-worker
+#   runtime: python
+#   plan: starter
+#   region: oregon
+#   buildCommand: |
+#     pip install --upgrade pip
+#     pip install -r requirements.txt
+#   startCommand: |
+#     python -m signal_triage.workers.background_worker
+#   envVars:
+#     - key: PYTHON_VERSION
+#       value: 3.11
+#     - key: DATABASE_URL
+#       fromDatabase:
+#         name: signal-triage-db
+#         property: connectionString
+#     - key: REDIS_URL
+#       fromService:
+#         name: signal-triage-redis
+#         type: redis
+#         property: connectionString

@@ -1,0 +1,107 @@
+version: '3.8'
+
+services:
+  # Signal Triage API Server
+  api:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL:-postgresql://signal_triage:password@db:5432/signal_triage}
+      - BENCHMARKER_USE_LIVE=${BENCHMARKER_USE_LIVE:-1}
+      - BENCHMARKER_DATA_SOURCE=${BENCHMARKER_DATA_SOURCE:-edgar}
+      - FRED_API_KEY=${FRED_API_KEY:-}
+      - ALPHAVANTAGE_API_KEY=${ALPHAVANTAGE_API_KEY:-}
+      - IEXCLOUD_API_TOKEN=${IEXCLOUD_API_TOKEN:-}
+      - NINEFIN_API_KEY=${NINEFIN_API_KEY:-}
+      - CACHE_BACKEND=${CACHE_BACKEND:-file}
+      - API_KEYS=${API_KEYS:-demo_key_123}
+    volumes:
+      - ../signal_triage:/app/signal_triage:ro
+      - api_cache:/app/cache
+      - api_logs:/app/logs
+    depends_on:
+      - db
+    command: >
+      uvicorn signal_triage.fastapi_app.main:create_app
+      --factory
+      --host 0.0.0.0
+      --port 8000
+      --reload
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Streamlit Dashboard
+  dashboard:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    environment:
+      - BENCHMARKER_USE_LIVE=${BENCHMARKER_USE_LIVE:-1}
+      - BENCHMARKER_DATA_SOURCE=${BENCHMARKER_DATA_SOURCE:-edgar}
+      - FRED_API_KEY=${FRED_API_KEY:-}
+    volumes:
+      - ../signal_triage:/app/signal_triage:ro
+    command: >
+      streamlit run signal_triage/ui/dashboard.py
+      --server.port=8501
+      --server.address=0.0.0.0
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=signal_triage
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=signal_triage
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U signal_triage"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache (Optional - for production)
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  api_cache:
+    driver: local
+  api_logs:
+    driver: local
+
+networks:
+  default:
+    name: signal_triage_network

@@ -1,0 +1,100 @@
+CREDIT AGREEMENT
+SERTA-STYLE BORROWER (Priming Risk Structure)
+Dated: November 2024
+
+═══════════════════════════════════════════════════════════════════════════════
+ARTICLE VII - NEGATIVE COVENANTS
+═══════════════════════════════════════════════════════════════════════════════
+
+Section 7.12. Incremental Facilities and Additional Debt.
+
+(a) Incremental Debt Baskets. The Borrower may, at any time and from time to time,
+    incur additional Indebtedness in the form of Incremental Term Loans, Incremental
+    Revolving Commitments, or other Incremental Facilities (collectively, "Incremental
+    Debt"), in an aggregate principal amount not to exceed the sum of:
+    
+    (i) $300,000,000 (the "Free and Clear Basket"); plus
+    
+    (ii) an unlimited amount, so long as, after giving pro forma effect to the
+        incurrence of such Incremental Debt and the use of proceeds therefrom, the
+        Secured Net Leverage Ratio does not exceed 5.00 to 1.00 (the "Ratio Basket").
+
+(b) Priority and Security. Any Incremental Debt may, at the sole election of the
+    Borrower:
+    
+    (i) rank pari passu in right of payment and security with the existing First
+        Lien Term Loans (the "Existing First Lien Debt"); or
+    
+    (ii) rank senior in right of payment or security to the Existing First Lien Debt
+        (so-called "super-priority" or "priming" debt); or
+    
+    (iii) rank junior in right of payment or security to the Existing First Lien Debt.
+
+(c) No Consent Required. The incurrence of any Incremental Debt pursuant to this
+    Section 7.12 shall NOT require the consent or approval of:
+    
+    (i) any existing Lender (other than the Lenders who elect to provide such
+        Incremental Debt, the "Incremental Lenders");
+    
+    (ii) the Administrative Agent (other than with respect to administrative and
+        documentation matters);
+    
+    (iii) any other Person.
+    
+    For the avoidance of doubt, minority Lenders under the Existing First Lien Debt
+    may be primed or subordinated by the incurrence of Incremental Debt without their
+    consent, so long as the Required Lenders (Lenders holding more than 50% of the
+    outstanding principal amount) do not object.
+
+(d) Use of Proceeds. The proceeds of Incremental Debt may be used for any corporate
+    purpose, including without limitation:
+    
+    (i) acquisitions and investments;
+    
+    (ii) refinancing of existing debt;
+    
+    (iii) restricted payments and dividends;
+    
+    (iv) general corporate purposes.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Section 10.01. Amendments and Waivers; Required Lenders.
+
+(a) Required Lender Consent. Amendments to this Credit Agreement require the consent
+    of Required Lenders (Lenders holding more than 50% of the aggregate outstanding
+    principal amount of the Term Loans).
+
+(b) Unanimous Consent. The following amendments require the consent of ALL Lenders
+    (100% unanimous consent):
+    
+    (i) reduce the principal amount of any Loan;
+    
+    (ii) reduce the rate of interest on any Loan;
+    
+    (iii) extend the maturity date of any Loan;
+    
+    (iv) release all or substantially all of the Collateral (other than as expressly
+         permitted by this Agreement or any Intercreditor Agreement).
+
+(c) Sacred Rights NOT Protected. Notably, the following amendments do NOT require
+    unanimous Lender consent and may be approved by Required Lenders (>50%):
+    
+    (i) modifications to lien priority or the relative priority of security interests;
+    
+    (ii) addition of pari passu or senior Incremental Facilities that prime existing
+         Lenders;
+    
+    (iii) amendments to the payment waterfall or distribution of collateral proceeds;
+    
+    (iv) amendments to intercreditor agreements or subordination provisions.
+
+PRIMING RISK ANALYSIS:
+• $300M free-and-clear basket - NO LEVERAGE TEST REQUIRED
+• Unlimited ratio basket at 5.0x - UNCAPPED IF TEST MET
+• Pari passu OR super-priority permitted - PRIMING EXPLICITLY ALLOWED
+• No consent required from existing Lenders - MINORITY SQUEEZE
+• Required Lenders (>50%) can modify lien priority - NO SACRED RIGHTS
+• Classic "Serta-style" priming risk structure
+• Precedent: Serta Simmons Minority Lender Litigation
+• PRIMING RISK SCORE: 9.0/10.0 (CRITICAL)

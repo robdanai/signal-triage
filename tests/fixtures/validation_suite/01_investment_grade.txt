@@ -1,0 +1,37 @@
+CREDIT AGREEMENT
+ABC CORPORATION (Investment Grade)
+Dated: January 15, 2024
+
+═══════════════════════════════════════════════════════════════════════════════
+CAPITAL STRUCTURE
+═══════════════════════════════════════════════════════════════════════════════
+
+Facility                    Principal          Maturity        Rate              Security
+Senior Secured Term Loan    $300,000,000      Jan 2029        SOFR + 200        First Priority
+Revolving Credit Facility   $100,000,000      Jan 2028        SOFR + 175        First Priority
+
+Total Debt: $400,000,000
+
+═══════════════════════════════════════════════════════════════════════════════
+ARTICLE I - DEFINITIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+"Consolidated EBITDA" means, for any period, net income plus:
+(a) interest expense;
+(b) income tax expense;
+(c) depreciation and amortization.
+
+This is a conservative EBITDA definition with only standard adjustments.
+
+═══════════════════════════════════════════════════════════════════════════════
+ARTICLE VII - NEGATIVE COVENANTS
+═══════════════════════════════════════════════════════════════════════════════
+
+Section 7.05. Asset Sales.
+
+Permitted only with lender consent or in ordinary course of business.
+100% of net proceeds shall be applied to mandatory prepayment of Term Loans.
+
+Section 7.08. Investments.
+
+No investments in Unrestricted Subsidiaries permitted without unanimous lender consent.

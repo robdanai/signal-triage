@@ -1,0 +1,17 @@
+CREDIT AGREEMENT – SAMPLE EXCERPTS
+
+Article VII: Negative Covenants
+
+Section 7.05. Limitation on Dispositions.
+The Company shall not, and shall not permit any Restricted Subsidiary to, make any Disposition of any assets or property (including any Asset Sale) unless (i) the aggregate fair market value of all such Dispositions in any fiscal year does not exceed $10,000,000 or (ii) the Required Lenders have given prior written consent. To the extent any Asset Sale yields net cash proceeds in excess of $1,000,000, 100% of such net cash proceeds shall be applied to mandatory prepayment of the Term Loans (sweep).
+
+Section 7.08. Limitation on Investments in Unrestricted Subsidiaries.
+The Company shall not, and shall not permit any Restricted Subsidiary to, make any Investment in any Unrestricted Subsidiary, or designate any Restricted Subsidiary as an Unrestricted Subsidiary, except to the extent permitted under the asset sale basket in Section 7.05 or with Required Lender consent. Transfers of intellectual property or other material assets to an Unrestricted Subsidiary (including structures commonly referred to as "J.Crew" or "Chewy" type transactions) are prohibited without consent.
+
+Section 7.12. Incremental Facilities.
+The Company may incur additional Indebtedness under Incremental Facilities in an aggregate principal amount not to exceed the sum of (x) $50 million (the "Free and Clear Basket") plus (y) any ratio debt capacity, in each case without the consent of any existing Lender. Such Incremental Facilities may be secured on a pari passu or senior basis (priming debt) as set forth in the Intercreditor Agreement.
+
+Section 7.15. Affiliate Transactions.
+The Company shall not, and shall not permit any Subsidiary to, enter into any Affiliate Transaction (including management fees or dividend recapitalizations to the Parent or equity holders) unless such transaction is on arm's length terms and the aggregate value of all such transactions in any fiscal year does not exceed $5,000,000, or the Required Lenders have consented. Upstream dividends to the Parent are permitted only to the extent of the basket in Section 7.03.
+
+End of sample.

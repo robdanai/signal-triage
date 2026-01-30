@@ -1,0 +1,46 @@
+CREDIT AGREEMENT
+DISTRESSED CORP (Covenant-Lite Structure)
+Dated: March 2024
+
+═══════════════════════════════════════════════════════════════════════════════
+ARTICLE I - DEFINITIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+"Consolidated EBITDA" means, for any period, net income plus:
+
+(a) interest expense, income tax expense, depreciation, and amortization;
+
+(b) non-cash charges and expenses, including:
+    (i) stock-based compensation expense;
+    (ii) write-offs and write-downs;
+    (iii) non-cash losses on asset dispositions;
+
+(c) restructuring charges, severance costs, and facility closure expenses;
+
+(d) one-time transaction expenses related to acquisitions, dispositions, or refinancings;
+
+(e) run-rate cost savings expected to be realized within 18 months of implementation,
+    as certified by a Financial Officer, not to exceed 20% of Consolidated EBITDA
+    calculated without giving effect to this clause (e);
+
+(f) run-rate synergies from acquisitions (actual or anticipated) expected to be
+    realized within 24 months of the acquisition date, as certified by a Financial
+    Officer, not to exceed 15% of Consolidated EBITDA;
+
+(g) pro-forma EBITDA adjustments for any acquisition completed during the measurement
+    period, calculated as if such acquisition had been consummated on the first day
+    of such period;
+
+(h) anticipated cost savings from pending or recently announced restructuring
+    initiatives, reorganizations, or business optimization programs;
+
+(i) extraordinary losses, non-recurring charges, and unusual expenses;
+
+(j) future cost savings and operational improvements certified by the CFO.
+
+RISK ASSESSMENT:
+• Multiple forward-looking adjustments
+• Synergies capped at 35% combined (clauses e+f)
+• Pro-forma acquisition EBITDA
+• Future savings with minimal documentation
+• OVERALL: HIGHLY AGGRESSIVE DEFINITION

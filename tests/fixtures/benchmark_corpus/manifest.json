@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "description": "Benchmark corpus for validating scoring behavior. Score ranges are inclusive [min, max]. Current analyzer uses keyword count + length; config-driven signals appear in score_breakdown but do not yet change the numeric score. This corpus locks in: score in range, expected_signal_types present when listed.",
+  "documents": [
+    {
+      "file": "low_distress.txt",
+      "score_min": 0,
+      "score_max": 50,
+      "expected_tier": "low",
+      "expected_signal_types": []
+    },
+    {
+      "file": "medium_distress.txt",
+      "score_min": 0,
+      "score_max": 100,
+      "expected_tier": null,
+      "expected_signal_types": []
+    },
+    {
+      "file": "high_distress.txt",
+      "score_min": 0,
+      "score_max": 100,
+      "expected_tier": null,
+      "expected_signal_types": ["going_concern", "liquidity_covenant", "auditor_emphasis"]
+    }
+  ]
+}

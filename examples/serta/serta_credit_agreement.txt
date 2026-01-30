@@ -1,0 +1,357 @@
+CREDIT AGREEMENT
+
+Dated as of November 8, 2016
+
+SERTA SIMMONS BEDDING, LLC, as Borrower
+THE LENDERS PARTY HERETO
+BANK OF AMERICA, N.A., as Administrative Agent and Collateral Agent
+
+$1,100,000,000 FIRST LIEN TERM LOAN B FACILITY
+
+===============================================================================
+
+ARTICLE I - DEFINITIONS AND ACCOUNTING TERMS
+
+Section 1.01 Defined Terms
+
+"ABL Facility" means the asset-based revolving credit facility in an aggregate principal amount not to exceed $200,000,000, secured by a first priority security interest in current assets (accounts receivable and inventory) and a second priority security interest in all other Collateral.
+
+"Collateral" means all present and future assets of the Borrower and the Guarantors, including equipment, inventory, accounts receivable, intellectual property, real property, and equity interests in Subsidiaries.
+
+"Consolidated EBITDA" means, for any period, net income plus (a) interest expense, (b) tax expense, (c) depreciation and amortization, (d) non-cash charges, (e) restructuring charges, (f) run-rate cost savings, and (g) other adjustments as defined in Schedule 1.01.
+
+"Incremental Facility" means one or more incremental term loan facilities incurred pursuant to Section 2.15.
+
+"Incremental Term Loans" means term loans incurred under an Incremental Facility pursuant to Section 2.15.
+
+"Obligations" means all amounts owed by the Borrower to the Lenders under the Loan Documents, including principal, interest, fees, and expenses.
+
+"Required Lenders" means, at any time, Lenders holding more than 50% of the sum of (a) the aggregate principal amount of Term Loans then outstanding plus (b) the aggregate amount of unused Commitments.
+
+"Term Loan B" or "Term Loans" means the term loans made by the Lenders to the Borrower on the Closing Date in an aggregate principal amount of $1,100,000,000.
+
+===============================================================================
+
+ARTICLE II - THE CREDITS
+
+Section 2.01 Term Loan Commitments
+
+Subject to the terms and conditions set forth herein, each Lender severally agrees to make a Term Loan to the Borrower on the Closing Date in an aggregate principal amount not to exceed such Lender's Commitment. The Term Loans shall be used to refinance existing indebtedness, pay transaction fees, and for general corporate purposes.
+
+Section 2.02 Interest Rates and Payment Dates
+
+The Term Loans shall bear interest at a rate per annum equal to LIBOR (with a 0.00% floor) plus 3.50% per annum.
+
+Interest shall be payable quarterly in arrears on the last Business Day of each March, June, September, and December.
+
+Section 2.03 Amortization and Maturity
+
+The Term Loans shall amortize in quarterly installments equal to 0.25% of the original principal amount (i.e., $2,750,000 per quarter), with the balance due on the Maturity Date (November 8, 2023).
+
+Section 2.15 Incremental Facilities
+
+(a) Request for Incremental Facility. The Borrower may at any time and from time to time request one or more Incremental Facilities by delivering a written notice to the Administrative Agent.
+
+(b) Incremental Amount. The aggregate principal amount of all Incremental Facilities shall not exceed the sum of:
+    (i) $250,000,000; plus
+    (ii) an unlimited amount provided that, after giving effect to such Incremental Facility, the First Lien Net Leverage Ratio does not exceed 4.50:1.00.
+
+(c) Terms of Incremental Facilities. The terms and conditions applicable to any Incremental Facility shall be as follows:
+
+    (i) Maturity: The final maturity date shall be no earlier than the Term Loan maturity date.
+    
+    (ii) Amortization: Amortization shall be no greater than the Term Loan amortization.
+    
+    (iii) Interest Rate: The Applicable Rate shall be determined by the Borrower and the Incremental Lenders.
+    
+    (iv) Security: Incremental Term Loans shall be secured on a first lien basis by the Collateral and guaranteed by the Guarantors.
+    
+    (v) Priority: Incremental Term Loans may rank pari passu with or junior to (but not senior to) the existing Term Loans with respect to the Collateral, unless otherwise approved by Required Lenders in accordance with Section 10.01.
+
+(d) Conditions Precedent. The effectiveness of any Incremental Facility shall be subject to:
+    (i) No Default or Event of Default shall exist;
+    (ii) The representations and warranties shall be true and correct in all material respects;
+    (iii) The Administrative Agent shall have received legal opinions, officer's certificates, and other documents reasonably requested.
+
+(e) Amendments. Each Incremental Facility shall be effected pursuant to an amendment to this Agreement and such other Loan Documents as the Administrative Agent shall reasonably request.
+
+===============================================================================
+
+ARTICLE III - REPRESENTATIONS AND WARRANTIES
+
+Section 3.01 Existence, Qualification and Power
+
+The Borrower and each Guarantor is a limited liability company or corporation duly organized, validly existing, and in good standing under the laws of its jurisdiction of incorporation or organization.
+
+Section 3.02 Authorization; No Contravention
+
+The execution, delivery, and performance by the Borrower of the Loan Documents have been duly authorized by all necessary corporate action and do not contravene any law or any contractual restriction binding on the Borrower.
+
+Section 3.03 Financial Condition
+
+The financial statements of the Borrower previously furnished to the Lenders present fairly, in all material respects, the financial position of the Borrower as of the dates indicated and the results of its operations for the periods indicated.
+
+===============================================================================
+
+ARTICLE IV - CONDITIONS
+
+Section 4.01 Closing Date
+
+The obligations of the Lenders to make Term Loans on the Closing Date are subject to the satisfaction (or waiver) of the following conditions precedent:
+
+(a) Executed Loan Documents
+(b) Legal Opinions
+(c) Officer's Certificates
+(d) Payment of Fees
+(e) Security Documents and Perfection Certificates
+(f) Financial Statements
+(g) Solvency Certificate
+
+===============================================================================
+
+ARTICLE V - AFFIRMATIVE COVENANTS
+
+Section 5.01 Financial Statements
+
+The Borrower shall deliver to the Administrative Agent and each Lender:
+
+(a) Quarterly unaudited financial statements within 45 days after the end of each fiscal quarter;
+(b) Annual audited financial statements within 90 days after the end of each fiscal year;
+(c) Compliance Certificate with each set of financial statements.
+
+Section 5.02 Certificates; Other Information
+
+The Borrower shall deliver to the Administrative Agent:
+
+(a) Promptly after the same are publicly available, all reports filed with the SEC;
+(b) Promptly after request, such other information regarding the operations, business, or financial condition of the Borrower as the Administrative Agent may reasonably request.
+
+Section 5.03 Payment of Obligations
+
+The Borrower shall pay and discharge all taxes, assessments, and governmental charges prior to the date on which penalties attach thereto.
+
+Section 5.04 Preservation of Existence
+
+The Borrower shall preserve and maintain its legal existence and all rights, privileges, and franchises necessary or desirable in the normal conduct of its business.
+
+Section 5.05 Maintenance of Properties
+
+The Borrower shall maintain all of its material properties used or useful in its business in good working order and condition.
+
+Section 5.06 Maintenance of Insurance
+
+The Borrower shall maintain insurance with financially sound and reputable insurance companies on all of its properties in at least such amounts and against such risks as are usually maintained by similar businesses.
+
+===============================================================================
+
+ARTICLE VI - NEGATIVE COVENANTS
+
+Section 6.01 Liens
+
+The Borrower shall not, and shall not permit any Guarantor to, create, incur, assume or suffer to exist any Lien upon any of its property, whether now owned or hereafter acquired, except:
+
+(a) Liens pursuant to the Loan Documents;
+(b) Liens securing the ABL Facility;
+(c) Purchase money Liens and Capitalized Lease Obligations not to exceed $50,000,000 in the aggregate;
+(d) Other Permitted Liens as defined herein.
+
+Section 6.02 Indebtedness
+
+The Borrower shall not, and shall not permit any Guarantor to, create, incur, assume or suffer to exist any Indebtedness, except:
+
+(a) Indebtedness under the Loan Documents;
+(b) Indebtedness under the ABL Facility;
+(c) Existing Indebtedness listed on Schedule 6.02;
+(d) Intercompany Indebtedness;
+(e) Indebtedness in respect of Capital Leases and purchase money Indebtedness not to exceed $50,000,000;
+(f) Additional Indebtedness not to exceed $100,000,000 in the aggregate;
+(g) Incremental Facilities pursuant to Section 2.15.
+
+Section 6.03 Fundamental Changes
+
+The Borrower shall not, and shall not permit any Guarantor to, merge, dissolve, liquidate, consolidate with or into another Person, or Dispose of all or substantially all of its assets, except:
+
+(a) Any Guarantor may merge with the Borrower (with the Borrower as surviving entity);
+(b) Asset sales permitted under Section 6.04.
+
+Section 6.04 Dispositions
+
+The Borrower shall not, and shall not permit any Guarantor to, make any Disposition of any asset, except:
+
+(a) Dispositions of inventory in the ordinary course of business;
+(b) Dispositions of worn-out or obsolete equipment;
+(c) Other Dispositions resulting in aggregate Net Proceeds not exceeding $75,000,000 in any fiscal year.
+
+Section 6.05 Restricted Payments
+
+The Borrower shall not, and shall not permit any Guarantor to, make any Restricted Payment, except:
+
+(a) Dividends payable solely in Equity Interests;
+(b) Other Restricted Payments not to exceed $50,000,000 in any fiscal year, provided that no Default or Event of Default has occurred and is continuing.
+
+===============================================================================
+
+ARTICLE VII - EVENTS OF DEFAULT AND REMEDIES
+
+Section 7.01 Events of Default
+
+Any of the following shall constitute an Event of Default:
+
+(a) Non-Payment of Principal: The Borrower fails to pay any principal on the Term Loans when due.
+
+(b) Non-Payment of Interest or Fees: The Borrower fails to pay any interest or fees within five Business Days of when due.
+
+(c) Breach of Certain Covenants: The Borrower breaches any covenant in Article VI and such breach continues for 30 days after written notice from the Administrative Agent.
+
+(d) Breach of Representations: Any representation or warranty proves to have been materially incorrect when made.
+
+(e) Cross-Default: The Borrower or any Guarantor defaults on any Indebtedness exceeding $50,000,000 in aggregate principal amount.
+
+(f) Bankruptcy: The Borrower or any Guarantor becomes subject to a bankruptcy or insolvency proceeding.
+
+(g) Judgments: A final judgment for the payment of money exceeding $75,000,000 is rendered against the Borrower and is not discharged or stayed within 60 days.
+
+(h) Change of Control: A Change of Control occurs.
+
+Section 7.02 Remedies Upon Event of Default
+
+If any Event of Default occurs and is continuing, the Administrative Agent may, and at the request of the Required Lenders shall, take any or all of the following actions:
+
+(a) Declare the Commitments terminated;
+(b) Declare the outstanding principal amount of all Term Loans, all interest accrued thereon, and all other amounts payable under the Loan Documents to be immediately due and payable;
+(c) Exercise all rights and remedies available under the Loan Documents and applicable law.
+
+Section 7.03 Application of Funds
+
+After the exercise of remedies by the Administrative Agent, any amounts received by the Administrative Agent shall be applied:
+
+FIRST, to payment of costs and expenses (including attorneys' fees) incurred by the Administrative Agent;
+SECOND, to payment of accrued and unpaid interest on the Term Loans;
+THIRD, to payment of principal on the Term Loans;
+FOURTH, to any other Obligations;
+FIFTH, to the Borrower or as otherwise required by law.
+
+All distributions under this Section 7.03 shall be made pro rata among the Lenders based on the amounts due to them.
+
+===============================================================================
+
+ARTICLE VIII - THE ADMINISTRATIVE AGENT
+
+Section 8.01 Appointment and Authority
+
+Each Lender hereby irrevocably appoints Bank of America, N.A. to act on its behalf as the Administrative Agent hereunder and under the other Loan Documents.
+
+Section 8.02 Rights as a Lender
+
+Bank of America, N.A. shall have the same rights and powers as any other Lender and may exercise the same as though it were not the Administrative Agent.
+
+Section 8.03 Exculpatory Provisions
+
+The Administrative Agent shall not be liable for any action taken or not taken by it with the consent or at the request of the Required Lenders, or in the absence of its own gross negligence or willful misconduct.
+
+===============================================================================
+
+ARTICLE IX - MISCELLANEOUS
+
+Section 9.01 Amendments and Waivers
+
+(a) Required Lender Consent. Except as provided below, no amendment or waiver of any provision of this Agreement shall be effective without the written consent of the Required Lenders.
+
+(b) Affected Lender Consent. No amendment or waiver shall, without the written consent of each Lender directly affected thereby:
+
+    (i) Extend the maturity date of any Term Loan or reduce the rate of interest thereon;
+    (ii) Reduce the principal amount of any Term Loan or any fees payable hereunder;
+    (iii) Extend the time for payment of any principal, interest, or fees;
+    (iv) Release all or substantially all of the Collateral (except as expressly permitted by the Loan Documents);
+    (v) Release all or substantially all of the Guarantors (except as expressly permitted by the Loan Documents);
+    (vi) Change the definition of "Required Lenders" or the percentage of Lenders required to take any action hereunder.
+
+(c) Amendments Permitted by Required Lenders. Notwithstanding Section 9.01(b), the Required Lenders may approve amendments to:
+
+    (i) The relative priority or ranking of the Term Loans and any Incremental Facilities;
+    (ii) The pro rata sharing of Collateral among the Term Loans and any Incremental Facilities;
+    (iii) Modifications to the Lien priority among different tranches of first lien debt.
+
+Section 9.02 Notices
+
+All notices and other communications provided for herein shall be in writing and shall be delivered by hand or overnight courier service, mailed by certified or registered mail, or sent by facsimile or email.
+
+Section 9.03 No Waiver; Cumulative Remedies
+
+No failure by any Lender or the Administrative Agent to exercise any right or remedy shall operate as a waiver thereof. The rights and remedies herein provided are cumulative.
+
+Section 9.04 Successors and Assigns
+
+The provisions of this Agreement shall be binding upon and inure to the benefit of the parties hereto and their respective successors and assigns.
+
+Section 9.05 Survival
+
+All covenants, agreements, representations, and warranties made by the Borrower in the Loan Documents shall survive the execution and delivery of the Loan Documents.
+
+Section 9.06 Governing Law; Jurisdiction; Etc.
+
+This Agreement shall be governed by the laws of the State of New York. Each party hereby irrevocably submits to the exclusive jurisdiction of the courts of the State of New York and the United States District Court for the Southern District of New York.
+
+Section 9.07 Severability
+
+If any provision of this Agreement is held to be illegal, invalid, or unenforceable, the legality, validity, and enforceability of the remaining provisions shall not be affected or impaired.
+
+Section 9.08 Counterparts
+
+This Agreement may be executed in counterparts, each of which shall constitute an original but all of which taken together shall constitute one contract.
+
+Section 9.09 Pro Rata Treatment
+
+Except to the extent otherwise provided herein, all payments of principal and interest on the Term Loans shall be made pro rata to the Lenders based on their respective outstanding principal amounts.
+
+Notwithstanding the foregoing, in the event of any Incremental Facility, payments and recoveries may be allocated among different tranches of first lien debt in accordance with the priority and ranking established pursuant to Section 2.15 and any amendments approved by Required Lenders pursuant to Section 9.01(c).
+
+===============================================================================
+
+SIGNATURES
+
+IN WITNESS WHEREOF, the parties hereto have caused this Agreement to be executed by their respective officers thereunto duly authorized, as of the date first written above.
+
+SERTA SIMMONS BEDDING, LLC
+
+By: /s/ Richard C. Cardin
+Name: Richard C. Cardin
+Title: Chief Financial Officer
+
+
+BANK OF AMERICA, N.A., as Administrative Agent and Collateral Agent
+
+By: /s/ James T. Sullivan
+Name: James T. Sullivan
+Title: Vice President
+
+
+[Lender signature pages follow]
+
+===============================================================================
+
+SCHEDULE 1.01 - CONSOLIDATED EBITDA ADJUSTMENTS
+
+Consolidated EBITDA shall be calculated by adding back (to the extent deducted in calculating Consolidated Net Income):
+
+1. Run-rate cost savings from restructuring initiatives (up to $50M annually)
+2. Synergies from acquisitions reasonably expected to be realized within 18 months
+3. Non-recurring charges related to store closures, plant consolidations, and other one-time events
+4. Stock-based compensation expense
+5. Non-cash impairment charges
+6. Costs related to this Transaction
+7. Other adjustments mutually agreed by Borrower and Administrative Agent
+
+===============================================================================
+
+SCHEDULE 6.02 - EXISTING INDEBTEDNESS
+
+1. ABL Facility: Up to $200,000,000 revolving credit facility
+2. Capital Lease Obligations: Approximately $35,000,000
+3. Intercompany loans among Borrower and Guarantors
+
+===============================================================================
+
+END OF CREDIT AGREEMENT
+
+[This is a simplified excerpt for educational purposes. The actual Serta Simmons credit agreement was significantly longer and more complex. Key provisions highlighted here demonstrate the mechanics that enabled the February 2020 uptier exchange.]

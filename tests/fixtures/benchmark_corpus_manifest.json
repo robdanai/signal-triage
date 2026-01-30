@@ -1,0 +1,10 @@
+{
+  "corpus_version": "1.0",
+  "description": "Locked benchmark corpus for reproducible quality and regression runs. Changing files or adding/removing entries must bump corpus_version.",
+  "schema_version": "1.0",
+  "files": [
+    "batch_folder/a.txt",
+    "batch_folder/b.txt"
+  ],
+  "notes": "Paths are relative to this manifest file. Optional 'sha256' per file can be added for integrity checks."
+}
