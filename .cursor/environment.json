@@ -1,0 +1,15 @@
+{
+  "name": "Signal Triage",
+  "install": "bash scripts/cloud-agent-install.sh",
+  "terminals": [
+    {
+      "name": "API Server",
+      "command": "DATABASE_URL=sqlite:///signal_triage.db .venv/bin/python run_api_server.py --host 127.0.0.1 --port 8000"
+    },
+    {
+      "name": "Dashboard",
+      "command": ".venv/bin/streamlit run signal_triage/ui/dashboard.py --server.port=8501 --server.address=127.0.0.1 --server.headless=true"
+    }
+  ],
+  "ports": [8000, 8501]
+}

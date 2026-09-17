@@ -40,25 +40,24 @@ def get_engine() -> Engine:
         db_url = config.database.database_url
         
         # Determine pool class based on database type
+        engine_kwargs: dict = {
+            "pool_pre_ping": True,  # Verify connections before using
+            "echo": config.database.echo_sql,
+        }
         if db_url.startswith("sqlite"):
-            # SQLite: use NullPool (no connection pooling)
-            poolclass = NullPool
-            connect_args = {"check_same_thread": False}  # Allow multi-threading
+            # SQLite: use NullPool (no connection pooling). NullPool does not
+            # accept pool_size/max_overflow, so those must be omitted here.
+            engine_kwargs["poolclass"] = NullPool
+            engine_kwargs["connect_args"] = {"check_same_thread": False}  # Allow multi-threading
         else:
-            # PostgreSQL, MySQL, etc.: use QueuePool
-            poolclass = QueuePool
-            connect_args = {}
+            # PostgreSQL, MySQL, etc.: use QueuePool with sizing options.
+            engine_kwargs["poolclass"] = QueuePool
+            engine_kwargs["pool_size"] = config.database.pool_size
+            engine_kwargs["pool_recycle"] = config.database.pool_recycle
+            engine_kwargs["max_overflow"] = config.database.pool_max_overflow
+            engine_kwargs["connect_args"] = {}
         
-        _engine = create_engine(
-            db_url,
-            poolclass=poolclass,
-            pool_size=config.database.pool_size,
-            pool_pre_ping=True,  # Verify connections before using
-            pool_recycle=config.database.pool_recycle,
-            max_overflow=config.database.pool_max_overflow,
-            echo=config.database.echo_sql,
-            connect_args=connect_args,
-        )
+        _engine = create_engine(db_url, **engine_kwargs)
         
         logger.info(f"Database engine created: {db_url.split('://')[0]}")
     
