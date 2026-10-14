@@ -68,7 +68,7 @@ class TestCLI(unittest.TestCase):
             self.assertIn("Tier:", out_str)
             self.assertIn("Score breakdown", out_str)
             self.assertIn("Explanation:", out_str)
-            self.assertIn("Keywords found:", out_str)
+            self.assertIn("Phrases matched:", out_str)
         finally:
             import os
             try:

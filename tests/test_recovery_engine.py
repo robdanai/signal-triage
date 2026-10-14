@@ -128,9 +128,21 @@ class TestRecoveryEngine(unittest.TestCase):
         ]
         ev = 6_000_000.60
         out = run_waterfall(tranches, ev)
-        self.assertAlmostEqual(out["ev_used"] + out["ev_remaining"], ev, places=2)
+        self.assertEqual(out["ev_used"] + out["ev_remaining"], Decimal(str(ev)))
         total_recovered = sum(r["recovered"] for r in out["recoveries"])
-        self.assertAlmostEqual(total_recovered, out["ev_used"], places=2)
+        self.assertEqual(total_recovered, out["ev_used"])
+
+    def test_pari_passu_rounding_residual_is_allocated(self):
+        """Pro-rata shares that don't divide evenly still sum exactly to EV used."""
+        tranches = [
+            {"name": "A", "claim": 100, "tier": 1},
+            {"name": "B", "claim": 100, "tier": 1},
+            {"name": "C", "claim": 100, "tier": 1},
+        ]
+        out = run_waterfall(tranches, 100)
+        self.assertEqual(sum(r["recovered"] for r in out["recoveries"]), Decimal("100.00"))
+        self.assertEqual(out["ev_used"], Decimal("100.00"))
+        self.assertEqual(out["ev_remaining"], Decimal("0.00"))
 
     def test_pari_passu_pro_rata_recovery(self):
         """Credit Integrity: same-tier tranches get pro-rata recovery (Pari Passu)."""

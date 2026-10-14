@@ -1,27 +1,34 @@
 {
-  "version": "1.0",
-  "description": "Benchmark corpus for validating scoring behavior. Score ranges are inclusive [min, max]. Current analyzer uses keyword count + length; config-driven signals appear in score_breakdown but do not yet change the numeric score. This corpus locks in: score in range, expected_signal_types present when listed.",
+  "version": "2.0",
+  "description": "Benchmark corpus for validating scoring calibration. Score ranges are inclusive [min, max]. The score is driven by config-defined credit signals (independent of document length); this corpus locks in tier per document, score range, expected signal types, and strict ordering low < medium < high.",
   "documents": [
     {
       "file": "low_distress.txt",
       "score_min": 0,
-      "score_max": 50,
+      "score_max": 10,
       "expected_tier": "low",
       "expected_signal_types": []
     },
     {
       "file": "medium_distress.txt",
-      "score_min": 0,
-      "score_max": 100,
-      "expected_tier": null,
-      "expected_signal_types": []
+      "score_min": 25,
+      "score_max": 60,
+      "expected_tier": "medium",
+      "expected_signal_types": [
+        "debt_maturity_refinancing"
+      ]
     },
     {
       "file": "high_distress.txt",
-      "score_min": 0,
+      "score_min": 60,
       "score_max": 100,
-      "expected_tier": null,
-      "expected_signal_types": ["going_concern", "liquidity_covenant", "auditor_emphasis"]
+      "expected_tier": "high",
+      "expected_signal_types": [
+        "going_concern",
+        "liquidity_covenant",
+        "auditor_emphasis",
+        "potential_default"
+      ]
     }
   ]
 }

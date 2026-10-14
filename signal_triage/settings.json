@@ -2,9 +2,24 @@
   "schema_version": "1.0",
   "config_name": "tiers_and_weights",
   "tiers": [
-    { "name": "low", "label": "Low distress", "min": 0, "max": 25 },
-    { "name": "medium", "label": "Medium distress", "min": 25, "max": 60 },
-    { "name": "high", "label": "High distress", "min": 60, "max": 100 }
+    {
+      "name": "low",
+      "label": "Low distress",
+      "min": 0,
+      "max": 25
+    },
+    {
+      "name": "medium",
+      "label": "Medium distress",
+      "min": 25,
+      "max": 60
+    },
+    {
+      "name": "high",
+      "label": "High distress",
+      "min": 60,
+      "max": 100
+    }
   ],
   "signal_weights": {
     "covenant_risk": 15,
@@ -13,5 +28,12 @@
     "sprime_leakage": 10,
     "uptiering": 12
   },
-  "default_signal_confidence": 0.85
+  "default_signal_confidence": 0.85,
+  "scoring": {
+    "weight_scale": 50.0,
+    "max_signal_severity": 0.9
+  },
+  "severity_floors": {
+    "going_concern": 60
+  }
 }

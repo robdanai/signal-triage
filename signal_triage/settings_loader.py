@@ -34,6 +34,34 @@ DEFAULT_SIGNAL_WEIGHTS = {
 DEFAULT_SIGNAL_CONFIDENCE = 0.85
 
 
+# Score aggregation parameters (see analyzer._score_signals)
+DEFAULT_SCORING = {"weight_scale": 50.0, "max_signal_severity": 0.9}
+# Minimum score when a dispositive signal is present (e.g. going-concern doubt -> high tier)
+DEFAULT_SEVERITY_FLOORS = {"going_concern": 60.0}
+
+
+def _load_scoring(data: dict[str, Any]) -> dict[str, float]:
+    scoring = dict(DEFAULT_SCORING)
+    raw = data.get("scoring")
+    if isinstance(raw, dict):
+        for key in scoring:
+            val = raw.get(key)
+            if isinstance(val, (int, float)) and val > 0:
+                scoring[key] = float(val)
+    scoring["max_signal_severity"] = min(scoring["max_signal_severity"], 1.0)
+    return scoring
+
+
+def _load_severity_floors(data: dict[str, Any]) -> dict[str, float]:
+    raw = data.get("severity_floors")
+    if not isinstance(raw, dict):
+        return dict(DEFAULT_SEVERITY_FLOORS)
+    return {
+        str(k): float(v) for k, v in raw.items()
+        if isinstance(v, (int, float)) and 0 <= v <= 100
+    }
+
+
 def _package_settings_path() -> Path:
     """Path to settings.json bundled with the package."""
     return Path(__file__).resolve().parent / "settings.json"
@@ -53,7 +81,8 @@ def _find_settings_path() -> Path | None:
 def load_settings() -> dict[str, Any]:
     """
     Load settings from settings.json (cwd or package).
-    Returns dict with keys: tiers, signal_weights, default_signal_confidence.
+    Returns dict with keys: tiers, signal_weights, default_signal_confidence,
+    scoring, severity_floors.
     """
     path = _find_settings_path()
     if path is None:
@@ -62,6 +91,8 @@ def load_settings() -> dict[str, Any]:
             "tiers": DEFAULT_TIERS,
             "signal_weights": DEFAULT_SIGNAL_WEIGHTS,
             "default_signal_confidence": DEFAULT_SIGNAL_CONFIDENCE,
+            "scoring": dict(DEFAULT_SCORING),
+            "severity_floors": dict(DEFAULT_SEVERITY_FLOORS),
         }
     try:
         with open(path, "r", encoding="utf-8") as f:
@@ -72,6 +103,8 @@ def load_settings() -> dict[str, Any]:
             "tiers": DEFAULT_TIERS,
             "signal_weights": DEFAULT_SIGNAL_WEIGHTS,
             "default_signal_confidence": DEFAULT_SIGNAL_CONFIDENCE,
+            "scoring": dict(DEFAULT_SCORING),
+            "severity_floors": dict(DEFAULT_SEVERITY_FLOORS),
         }
     # Validate schema_version for reproducibility (accept legacy "version")
     schema_version = data.get("schema_version") or data.get("version")
@@ -107,6 +140,8 @@ def load_settings() -> dict[str, Any]:
         "tiers": tiers,
         "signal_weights": signal_weights,
         "default_signal_confidence": confidence,
+        "scoring": _load_scoring(data),
+        "severity_floors": _load_severity_floors(data),
     }
 
 

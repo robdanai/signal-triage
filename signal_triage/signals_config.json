@@ -25,10 +25,7 @@
         "covenant default",
         "waiver",
         "material adverse",
-        "mac",
         "material adverse change",
-        "cure period",
-        "event of default",
         "liquidity shortfall",
         "insufficient liquidity"
       ]
@@ -73,8 +70,7 @@
         "waiver",
         "material adverse",
         "material adverse change",
-        "cure period",
-        "event of default"
+        "cure period"
       ]
     },
     {

@@ -84,12 +84,21 @@ class TestBenchmarkCorpus(unittest.TestCase):
             breakdown = result.get("score_breakdown") or {}
             signals = breakdown.get("signals") or []
             detected_types = {s.get("type") for s in signals if s.get("type")}
-            overlap = detected_types & set(expected_types)
-            self.assertGreater(
-                len(overlap),
-                0,
-                f"{file_name}: expected at least one of {expected_types}, got {detected_types}",
+            missing = set(expected_types) - detected_types
+            self.assertFalse(
+                missing,
+                f"{file_name}: expected all of {expected_types}, missing {missing}",
             )
+
+    def test_scores_rank_documents_by_severity(self):
+        """Calibration guard: low < medium < high. A scorer that ignores credit
+        signals (e.g. one driven by document length) fails this."""
+        scores = {}
+        for name in ("low_distress.txt", "medium_distress.txt", "high_distress.txt"):
+            text = (BENCHMARK_DIR / name).read_text(encoding="utf-8", errors="replace")
+            scores[name] = analyze_text(text)["score"]
+        self.assertLess(scores["low_distress.txt"], scores["medium_distress.txt"], scores)
+        self.assertLess(scores["medium_distress.txt"], scores["high_distress.txt"], scores)
 
 
 if __name__ == "__main__":

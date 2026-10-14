@@ -860,14 +860,15 @@ def main():
                 conf = comp.get("confidence", 0)
                 print(f"  - {name}: contribution={contrib:.2f}, weight={weight:.1f}, confidence={conf:.2f}")
         print("Explanation:")
-        print(f"- Keyword matches: {result['keyword_count']}")
+        print(f"- Credit signal matches: {result['keyword_count']}")
         if result["keywords_found"]:
             keywords_list = ", ".join(result["keywords_found"])
         else:
             keywords_list = "none"
-        print(f"- Keywords found: {keywords_list}")
-        print(f"- Keyword score contribution: {result['base_score']:.2f}")
-        print(f"- Length score contribution: {result['length_factor']:.2f}")
+        print(f"- Phrases matched: {keywords_list}")
+        print(f"- Combined signal score: {result['base_score']:.2f}")
+        if result.get("floor_applied"):
+            print(f"- Severity floor applied: {result['floor_applied']}")
         lme = result.get("lme_signals", [])
         if lme:
             print("LME signals:", len(lme))

@@ -62,7 +62,7 @@ def run_waterfall(
         return {
             "recoveries": [],
             "fulcrum_security": None,
-            "ev_used": ev_q,
+            "ev_used": Decimal("0.00"),
             "ev_remaining": ev_q,
         }
 
@@ -100,17 +100,23 @@ def run_waterfall(
                     fulcrum_security = name
             continue
 
-        pool = min(remaining, tier_claims)
-        for name, claim in group:
-            if tier_claims > 0:
-                recovered = claim / tier_claims * pool  # exact Decimal; sum(recovered) == pool
-            else:
-                recovered = Decimal("0")
+        pool = min(remaining, tier_claims).quantize(QUANT, rounding=ROUND_HALF_UP)
+        # Pro-rata shares rounded to cents, with any rounding residual assigned
+        # to the largest claim so the tier's recoveries sum exactly to pool.
+        shares = [
+            (claim / tier_claims * pool).quantize(QUANT, rounding=ROUND_HALF_UP)
+            for _, claim in group
+        ]
+        residual = pool - sum(shares)
+        if residual:
+            largest = max(range(len(group)), key=lambda j: group[j][1])
+            shares[largest] += residual
+        for (name, claim), recovered in zip(group, shares):
             recovery_pct = (recovered / claim * 100) if claim > 0 else Decimal("0")
             recoveries.append({
                 "name": name,
                 "claim": claim.quantize(QUANT, rounding=ROUND_HALF_UP),
-                "recovered": recovered.quantize(QUANT, rounding=ROUND_HALF_UP),
+                "recovered": recovered,
                 "recovery_pct": recovery_pct.quantize(QUANT, rounding=ROUND_HALF_UP),
             })
             if fulcrum_security is None and 0 < recovery_pct < 100:
@@ -121,8 +127,9 @@ def run_waterfall(
         if remaining < 0:
             remaining = Decimal("0")
 
-    ev_used = (ev_d - remaining).quantize(QUANT, rounding=ROUND_HALF_UP)
-    
+    remaining = remaining.quantize(QUANT, rounding=ROUND_HALF_UP)
+    ev_used = (ev_d.quantize(QUANT, rounding=ROUND_HALF_UP) - remaining)
+
     # Detect APR violations
     apr_violations = _detect_apr_violations(recoveries)
     
